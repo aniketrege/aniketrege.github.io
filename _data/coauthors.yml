@@ -1,34 +1,31 @@
-"Adams":
-  - firstname: ["Edwin", "E.", "E. P.", "Edwin Plimpton"]
-    url: https://en.wikipedia.org/wiki/Edwin_Plimpton_Adams
+"Kusupati":
+  - firstname: ["Aditya", "A."]
+    url: https://homes.cs.washington.edu/~kusupati/
 
-"Podolsky":
-  - firstname: ["Boris", "B.", "B. Y.", "Boris Yakovlevich"]
-    url: https://en.wikipedia.org/wiki/Boris_Podolsky
+"Bhatt":
+  - firstname: ["Gantavya", "G."]
+    url: https://sites.google.com/view/gbhatt/
 
-"Rosen":
-  - firstname: ["Nathan", "N."]
-    url: https://en.wikipedia.org/wiki/Nathan_Rosen
+"Wallingford":
+  - firstname: ["Matthew", "M."]
+    url: https://mattwallingford.github.io/
 
-"Bach": 
-  - firstname: ["Johann Sebastian", "J. S."]
-    url: https://en.wikipedia.org/wiki/Johann_Sebastian_Bach
+"Ramanujan": 
+  - firstname: ["Vivek", "V."]
+    url: https://vkramanuj.github.io/
 
-  - firstname: ["Carl Philipp Emanuel", "C. P. E."]
-    url: https://en.wikipedia.org/wiki/Carl_Philipp_Emanuel_Bach
+"Kakade":
+  - firstname: ["Sham", "S."]
+    url: https://sham.seas.harvard.edu/
 
-"Przibram":
-  - firstname: ["Karl"]
-    url: https://link.springer.com/article/10.1007/s00016-019-00242-z
+"Jain":
+  - firstname: ["Prateek", "P."]
+    url: http://www.prateekjain.org/
 
-"Schrödinger":
-  - firstname: ["Erwin"]
-    url: https://en.wikipedia.org/wiki/Erwin_Schr%C3%B6dinger
+"Farhadi":
+  - firstname: ["Ali", "A."]
+    url: https://homes.cs.washington.edu/~ali/
 
-"Lorentz":
-  - firstname: ["Hendrik Antoon"]
-    url: https://en.wikipedia.org/wiki/Hendrik_Lorentz
-
-"Planck":
-  - firstname: ["Max"]
-    url: https://en.wikipedia.org/wiki/Max_Planck
+"Kulkarni":
+  - firstname: ["Muralidhar", "M."]
+    url: https://ece.nitk.ac.in/faculty/muralidhar-kulkarni

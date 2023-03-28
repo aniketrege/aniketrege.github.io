@@ -2,96 +2,86 @@
   type: map
   contents:
     - name: Full Name
-      value: Albert Einstein
-    - name: Date of Birth
-      value: 14th March 1879
+      value: Aniket Rege
     - name: Languages
-      value: English, German
+      value: English, Hindi, Marathi
 
 - title: Education
   type: time_table
   contents:
-    - title: PhD
-      institution: University of Zurich, Zurich, Switzerland
-      year: 1905
+    - title: MS, Electrical and Computer Engineering
+      institution: University of Washington, Seattle
+      year: 2021 - present
       description:
-        - Description 1.
-        - Description 2.
-        - title: Description 3.
-          contents:
-            - Sub-description 1.
-            - Sub-description 2.
-    - title: Federal teaching diploma
-      institution: Eidgenössische Technische Hochschule, Zurich, Switzerland
-      year: 1900
+        - Graduate Researcher at RAIVN Lab, Department of Computer Science
+        - Research focus on visual representation learning, learning from minimal supervision, and large scale image retrieval
+        - Graduate T.A.
+    - title: B. Tech, Electronics and Communication Engineering
+      institution: National Institute of Technology Karnataka
+      year: 2014-2018
       description:
-        - Description 1.
-        - Description 2.
+        - Thesis on fairness of QUIC Protocol in real-world deployment.
 
 - title: Experience
   type: time_table
   contents:
-    - title: Professor of Theoretical Physics
-      institution: Institute for Advanced Study, Princeton University
-      year: 1933 - 1955
+    - title: Applied Research Intern
+      institution: NVIDIA Redmond
+      year: 2022
       description:
-        - Description 1.
-        - Description 2.
-        - title: Description 3.
-          contents:
-            - Sub-description 1.
-            - Sub-description 2.
-    - title: Visiting Professor
-      institution: California Institute of Technology, Pasadena, California, US
-      year: 1933
+        - Improved performance of MultiView LidarNet on pedestrians, a critical safety and reliability issue for autonomous vehicles
+        - Incorporation of pedestrian orientation-aware training schema to improve precision on cars by 21.3% and pedestrians by 14.7% at cost to recall
+        - To model long-range dependencies in representation subspace of Lidar point cloud, added naive multi-head attention at deeper layers, as well as ViT-style patched multi-head attention at shallower layers
+        - Creation of attention-augmented CNN improved overall pedestrian performance (+8% recall, +7.5% precision) at only +1.5 ms inference cost while also improving car performance
+    - title: Research Engineer
+      institution: Samsung Research
+      year: 2018-2021
       description:
-        - Description 1.
-        - Description 2.
+        - Founding member in the team that developed and shipped Single Take Camera, the USP of the Galaxy S20 smartphone, which included an ML classification model for portrait mode effects and overall system logic
+        - Published two papers on structured video representations for motion understanding (ICCV W '21) and intelligent facial texture smoothing (CVPR W '20)
+        - Granted two US Patents for work on facial texture smoothing and deep learning candid image classification
 
-    - title: Director
-      institution: Kaiser Wilhelm Institute for Physics, Berlin, Germany.
-      year: 1917-1933
-
-    - title: Professor of Theoretical Physics
-      institution: Karl-Ferdinand University, Prague, Czechoslovakia
-      year: 1911 - 1917
-      description:
-
-    - title: Associate Professor of Theoretical Physics
-      institution: University of Zurich, Zurich, Switzerland
-      year: 1909 - 1911
-
-- title: Open Source Projects
-  type: time_table
-  contents:
-    - title: <a href="https://github.com/alshedivat/al-folio">al-folio</a>
-      year: 2015-now
-      description: A beautiful, simple, clean, and responsive Jekyll theme for academics.
 
 - title: Honors and Awards
   type: time_table
   contents:
-    - year: 1921
+    - year: 2021
       items: 
-        - Nobel Prize in Physics 
-        - Matteucci Medal
-    - year: 2029
+        - Samsung HQ Best Project Award (Single Take Camera)
+    - year: 2019
       items: 
-        - Max Planck Medal
-
-- title: Academic Interests
-  type: nested_list
-  contents:
-    - title: Topic 1.
-      items: 
-        - Description 1.
-        - Description 2.
-    - title: Topic 2.
+        - Samsung Best Paper '19 Finalist (Selected from all worldwide offices)
+        - Samsung India Outstanding Contribution Award (AI Beauty Solution shipped to 50M+ devices)
+    - year: 2017
       items:
-        - Description 1.
-        - Description 2.
+        - Road to Global Entrepreneurship Summit (GES) '17 national finalist for "An analysis of sleep hygiene" project 
 
-- title: Other Interests
-  type: list
+- title: Extracurriculars
+  type: time_table
   contents:
-    - <u>Hobbies:</u> Hobby 1, Hobby 2, etc.
+    - title: Convener and Head
+      institution: Indian Society for Technical Education (ISTE), NITK
+      year: 2017-18
+      description:
+        - Led a team of 100+ students to conduct technical talk and cross-domain technical projects across STEM fields, business, literature, and graphic design.
+        - Head of the Electrical Engineering special interest group.
+        - Pioneered NITK's first annual technical club project expo in association with IEEE-NITK
+
+    - title: Joint Convener and Head
+      institution: Engineer NITK (Technical Fest)
+      year: 2017
+      description:
+        - Joint head of NITK's annual tech fest, Engineer, the second largest in South India.
+        - Co-led the Technites Committee, a three day expo of EECS projects primarily focused on embedded electronics and sound engineering.
+        - Initiated and organized the university's first cross-campus hackathon during the annual tech fest with SRIB.
+# - title: Academic Interests
+#   type: nested_list
+#   contents:
+#     - title: Topic 1.
+#       items: 
+#         - Description 1.
+#         - Description 2.
+#     - title: Topic 2.
+#       items:
+#         - Description 1.
+#         - Description 2.

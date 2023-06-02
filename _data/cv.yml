@@ -9,6 +9,9 @@
 - title: Education
   type: time_table
   contents:
+    - title: Ph.D, Computer Sciences
+      institution: University of Wisconsin-Madison
+      year: 2023 (incoming)
     - title: MS, Electrical and Computer Engineering
       institution: University of Washington, Seattle
       year: 2021 - present
@@ -45,6 +48,10 @@
 - title: Honors and Awards
   type: time_table
   contents:
+    - year: 2022
+      items: 
+        - NeurIPS Scholar
+        - University of Washington Graduate School Award
     - year: 2021
       items: 
         - Samsung HQ Best Project Award (Single Take Camera)

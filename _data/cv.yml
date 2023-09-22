@@ -11,10 +11,10 @@
   contents:
     - title: Ph.D, Computer Sciences
       institution: University of Wisconsin-Madison
-      year: 2023 (incoming)
+      year: 2023 - present
     - title: MS, Electrical and Computer Engineering
       institution: University of Washington, Seattle
-      year: 2021 - present
+      year: 2021 - 2023
       description:
         - Graduate Researcher at RAIVN Lab, Department of Computer Science
         - Research focus on visual representation learning, learning from minimal supervision, and large scale image retrieval
@@ -48,6 +48,9 @@
 - title: Honors and Awards
   type: time_table
   contents:
+    - year: 2023
+      items: 
+        - Department of Computer Sciences Scholarship
     - year: 2022
       items: 
         - NeurIPS Scholar

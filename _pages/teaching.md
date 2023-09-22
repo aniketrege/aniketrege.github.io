@@ -7,6 +7,12 @@ nav: true
 nav_order: 5
 ---
 ---
+### University of Wisconsin-Madison
+
+##### *"[Introduction to Artificial Intelligence](https://pages.cs.wisc.edu/~jerryzhu/cs540f23/index.html)"* (CS 540)
+- Prof. Jerry Zhu, Fall '23
+
+---
 ### University of Washington
 
 ##### *"[Deep Learning](https://courses.cs.washington.edu/courses/cse493g1/23sp/)"* (CSE 493/599)

@@ -912,14 +912,5 @@ d-appendix a:hover, d-appendix a.footnote-backlink:hover {
     grid-column: none;
   }
 }
-div {
-  float: left;
-  margin-right: 10px;
-}
-
-div > img {
-  height: 250px;
-  width: 325px;
-}
 
 /*# sourceMappingURL=main.css.map */

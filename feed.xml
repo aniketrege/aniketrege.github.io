@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="https://aniketrege.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aniketrege.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2024-02-06T08:21:34+00:00</updated><id>https://aniketrege.github.io/feed.xml</id><title type="html">blank</title><subtitle>A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="https://aniketrege.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aniketrege.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2024-02-06T08:34:22+00:00</updated><id>https://aniketrege.github.io/feed.xml</id><title type="html">blank</title><subtitle>A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
 </subtitle><entry><title type="html">Matryoshka Representation Learning (MRL) from the Ground Up</title><link href="https://aniketrege.github.io/blog/2024/mrl/" rel="alternate" type="text/html" title="Matryoshka Representation Learning (MRL) from the Ground Up" /><published>2024-01-31T00:00:00+00:00</published><updated>2024-01-31T00:00:00+00:00</updated><id>https://aniketrege.github.io/blog/2024/mrl</id><content type="html" xml:base="https://aniketrege.github.io/blog/2024/mrl/"><![CDATA[<blockquote>
   <p>This article is best suited for ML practitioners and researchers, but is written in an attempt to be accessible to anyone interested in machine learning, artificial intelligence, and tech.
 Reading Time Estimates:</p>
@@ -174,22 +174,18 @@ If your answer to this question was <code class="language-plaintext highlighter-
 <h2 id="how-good-is-mrl">How Good is MRL?</h2>
 <p>You may be wondering, how does learning Matryoshka dolls compare to training a new doll from scratch at different dimensionality $\textcolor{gray}{d}$ every time? While training all dolls at once with MRL is much more efficient, surely each MRL doll’s performance will be <strong>worse</strong> than than its corresponding independently trained doll?</p>
 
-<p>We were pleasantly surprised to discover that <code class="language-plaintext highlighter-rouge">MRL dolls outperform independently trained dolls at each dimensionality</code>, as seen in the figures below from the MRL paper<d-cite key="kusupati2022matryoshka"></d-cite>, at both:</p>
+<p>We were pleasantly surprised to discover that $\textcolor{blue}{\text{MRL dolls}}$ outperform $\textcolor{green}{\text{independently trained dolls}}$ at each dimensionality, as seen in the figures below from the MRL paper<d-cite key="kusupati2022matryoshka"></d-cite>, at both:</p>
 
 <p>(a) <code class="language-plaintext highlighter-rouge">Million scale</code> on <a href="https://en.wikipedia.org/wiki/ImageNet">ImageNet-1K</a> with a ResNet-50<d-cite key="he2016deep"></d-cite> Neural Encoder at $\textcolor{gray}{d_\text{ImageNet} \in (8, 16, … , 2048)}$</p>
 
 <p>(b) <code class="language-plaintext highlighter-rouge">Billion scale</code> on JFT-300M<d-cite key="sun2017revisiting"></d-cite> with ViT B/16<d-cite key="dosovitskiy2020image"></d-cite> and <a href="https://blog.research.google/2021/05/align-scaling-up-visual-and-vision.html?m=0">ALIGN</a> Neural Encoders with $\textcolor{gray}{d_\text{JFT} \in (12, 24, … , 768)}$</p>
 
-<div class="mrl-results">
-    <div>
-        <img src="/assets/img/blog/mrl-r50-imagenet.png" alt="MRL with ResNet50 models on ImageNet show strong performance at all doll sizes" width="300" height="20" />
-        <p>a) ResNet-50 1-NN Accuracy on ImageNet</p>
-    </div>
-    <div>
-        <img src="/assets/img/blog/mrl-vit-align-jft.png" alt="MRL performance seamlessly scales to billion scale data" width="300" height="200" />
-        <p>b) ViT B/16 and ALIGN 1-NN Accuracy on JFT</p>
-    </div>
-</div>
+<center>
+<img src="/assets/img/blog/mrl-r50-imagenet.png" alt="MRL with ResNet50 models on ImageNet show strong performance at all doll sizes" width="400" height="300" />
+<p>a) ResNet-50 1-NN Accuracy on ImageNet</p>
+<img src="/assets/img/blog/mrl-vit-align-jft.png" alt="MRL performance seamlessly scales to billion scale data" width="400" height="300" />
+<p>b) ViT B/16 and ALIGN 1-NN Accuracy on JFT</p>
+</center>
 
 <p>In summary, MRL provides little to no accuracy drop for large efficiency gains across:</p>
 <ol>
@@ -229,7 +225,7 @@ If your answer to this question was <code class="language-plaintext highlighter-
 
 <p><br /><br /></p>
 
-<p>It turns that yes, you can - <code class="language-plaintext highlighter-rouge">MRL model accuracies seamlessly interpolate at all doll sizes</code> between the fixed doll sizes it was trained for ($\textcolor{gray}{d_{ImageNet}}$ and $\textcolor{gray}{d_{JFT}}$)! This means we can freely, in the words of OpenAI, “remove some numbers from the end of the sequence” of any representation, and use that embedding directly! I’m not going to make a doll analogy for this because the thought is quite gruesome.</p>
+<p>It turns that yes, you can - <code class="language-plaintext highlighter-rouge">MRL model accuracies seamlessly interpolate at all doll sizes</code> between the fixed doll sizes it was trained for ($\textcolor{gray}{d_{ImageNet}}$ and $\textcolor{gray}{d_{JFT}}$)! You can see this in the figure from the MRL paper above, where the X-Axis is the doll size or representation size, and all the $\textcolor{red}{\text{red points}}$ are evaluations at $\textcolor{red}{\text{interpolated sizes}}$. This means we can freely, in the <a href="https://openai.com/blog/new-embedding-models-and-api-updates">words of OpenAI</a>, “remove some numbers from the end of the sequence” of any representation, and use that embedding directly! I’m not going to make a doll analogy for this because the thought is quite gruesome.</p>
 
 <h2 id="so-what-is-the-catch">So What is the Catch?</h2>
 <p>None! Please go train MRL models on huge datasets with huge transformers and open source your work!</p>

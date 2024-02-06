@@ -1,5 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="https://aniketrege.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aniketrege.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2024-02-03T07:23:46+00:00</updated><id>https://aniketrege.github.io/feed.xml</id><title type="html">blank</title><subtitle>A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
-</subtitle><entry><title type="html">Matryoshka Representation Learning (MRL)</title><link href="https://aniketrege.github.io/blog/2024/distill/" rel="alternate" type="text/html" title="Matryoshka Representation Learning (MRL)" /><published>2024-01-31T00:00:00+00:00</published><updated>2024-01-31T00:00:00+00:00</updated><id>https://aniketrege.github.io/blog/2024/distill</id><content type="html" xml:base="https://aniketrege.github.io/blog/2024/distill/"><![CDATA[<h1 id="what-is-mrl">What is MRL?</h1>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="https://aniketrege.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aniketrege.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2024-02-06T08:21:34+00:00</updated><id>https://aniketrege.github.io/feed.xml</id><title type="html">blank</title><subtitle>A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
+</subtitle><entry><title type="html">Matryoshka Representation Learning (MRL) from the Ground Up</title><link href="https://aniketrege.github.io/blog/2024/mrl/" rel="alternate" type="text/html" title="Matryoshka Representation Learning (MRL) from the Ground Up" /><published>2024-01-31T00:00:00+00:00</published><updated>2024-01-31T00:00:00+00:00</updated><id>https://aniketrege.github.io/blog/2024/mrl</id><content type="html" xml:base="https://aniketrege.github.io/blog/2024/mrl/"><![CDATA[<blockquote>
+  <p>This article is best suited for ML practitioners and researchers, but is written in an attempt to be accessible to anyone interested in machine learning, artificial intelligence, and tech.
+Reading Time Estimates:</p>
+  <ol>
+    <li>ML Practitioner: 20 minutes</li>
+    <li>Working in Computer Science/Tech: 30 minutes</li>
+    <li>Generally Interested: 40 minutes+</li>
+  </ol>
+</blockquote>
+
+<h1 id="what-is-mrl">What is MRL?</h1>
 <p>If you keep yourself updated on OpenAI’s blog posts, you may have seen the recent release of <a href="https://openai.com/blog/new-embedding-models-and-api-updates">new embedding models</a>, which included support for <em>shortening embeddings</em>, where developers could simply “remove some numbers from the end of a sequence” and still maintain a valid representation for text. Why is this cool?</p>
 <ol>
   <li>Save a lot of memory (storing the embedding)</li>
@@ -7,7 +17,7 @@
   <li><strong>Critical</strong>: What if the biggest embedding isn’t the best?</li>
 </ol>
 
-<p>This property emerged in the new models due to a mysterious and unspecified “technique”. After some <a href="https://twitter.com/jainprateek_/status/1751479439052140622">very minor subtweeting</a>, OpenAI kindly <a href="https://twitter.com/owencm/status/1751409104713826666">updated their blog post</a> to remove this shroud of mystery to reveal this technique: Matryoshka Representation Learning<d-cite key="kusupati2022matryoshka"></d-cite>, which you should fully understand from this single GIF:</p>
+<p>This property emerged in the new models due to a mysterious and unspecified “technique”. After some <a href="https://twitter.com/jainprateek_/status/1751479439052140622">very minor subtweeting</a>, OpenAI kindly <a href="https://twitter.com/owencm/status/1751409104713826666">updated their blog post</a> to remove this shroud of mystery to reveal this technique: :nesting_dolls: Matryoshka Representation Learning<d-cite key="kusupati2022matryoshka"></d-cite> :nesting_dolls:, which you should fully understand from this single GIF:</p>
 
 <center><img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExdXNscHUzajM3ejVhbjR5dXJwczE4N2Y4a28wc3plNW9ucjRmN25jZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/nthoYgQ91Up2u7qmcE/giphy.gif" alt="A gif illustrating Matroyshka (Russian) dolls" width="300" height="300" /></center>
 
@@ -15,7 +25,7 @@
 <p>You didn’t understand a lot of what you just read? That’s okay, let’s take a step back.</p>
 
 <blockquote>
-  <p>Note: For ML Researchers or those familiar with this space, feel free to skip directly to the <a href="#matryoshka-dolls">Matryoshka</a> section.</p>
+  <p>Note: For ML Researchers or those familiar with this space, feel free to skip directly to the <a href="#matryoshka">Matryoshka</a> :nesting_dolls: section.</p>
 </blockquote>
 
 <h2 id="representation-learning">Representation Learning</h2>
@@ -23,31 +33,49 @@
 <p>Modern Deep Learning allows us to <em>learn</em> good representations for data, instead of having experts handcraft them. The <a href="#matryoshka">Matryoshka Section</a> will take closer look at what “good” means.</p>
 
 <h3 id="how-do-we-represent-data-for-computers">How do we Represent Data for Computers?</h3>
-<p>Let’s say you want to build something cool using some data that you have - a fairly general problem we all face every day. With computers, we need a way to represent this data - an image, text, data table, audio, smell (let me know when you figure this one out) in a way computers can understand. Computers understand data with numbers, and we typically arrive at these numbers with some function $f$ that maps the data from its original representation (e.g. an <a href="https://web.stanford.edu/class/cs101/image-1-introduction.html#:~:text=Each%20of%20the%20red%2C%20green,in%20a%20shade%20of%20orange">RGB encoding of an image</a>) to a sequence of $d$ numbers, which we also call the <strong>dimensionality</strong> of the data.</p>
+<p>Let’s say you want to build something cool using some data that you have - a fairly general problem we all face every day. With computers, we need a way to represent this data - an image, text, data table, audio - in a way computers can understand. Computers understand data with numbers, and we typically arrive at these numbers with some function $\textcolor{gray}{f}$ that maps the data from its original representation (e.g. an <a href="https://web.stanford.edu/class/cs101/image-1-introduction.html#:~:text=Each%20of%20the%20red%2C%20green,in%20a%20shade%20of%20orange">RGB encoding of an image</a>) to a sequence of $\textcolor{gray}{d}$ numbers, which we call the <code class="language-plaintext highlighter-rouge">learned representation</code> $\textcolor{gray}{z}$. In <em>math language</em>  we say $\textcolor{gray}{z\in\mathbb{R}^d}$, or representation $\textcolor{gray}{z}$ belongs to the set of <a href="https://en.wikipedia.org/wiki/Real_number">real numbers</a> $\textcolor{gray}{\mathbb{R}}$, with <code class="language-plaintext highlighter-rouge">dimensionality</code> $\textcolor{gray}{d}$.</p>
 
 \[\begin{align*}
-&amp;f(x = \text{cat image}) = [\text{num}_1, \text{num}_2, \text{num}_3, ..., \text{num}_d], f(x) \in \mathbb{R}^d\\\\
-&amp;\text{For example, } f = \text{HoG}(x), f = \text{Canny}(x), f=\text{Gabor}(x)
+&amp;x = \text{cat image} \\
+&amp;z = f(x) = [\text{num}_1, \text{num}_2, \text{num}_3, ..., \text{num}_d]\\\\
+&amp;\text{Examples:} \\
+&amp;z = [0.42, -1.96, ..., 1.43],~z \in \mathbb{R}^d \\
+&amp;f\to \text{can be HoG, Canny, Gabor}
 \end{align*}\]
 
-<p>With me so far? Now how do we pick a good function $f$ to represent our cat image? In the “old days” (if you’ve read ML research before 2012, I’m crying with you), expert humans would have done the Representation Learning for everyone else, i.e. used a PhD-worth of domain-specific knowledge to hand-craft good features to represent a cat. For example, maybe we care about horizontal and vertical edges (<a href="https://en.wikipedia.org/wiki/Canny_edge_detector">Canny Edge Detector</a>), or some kind of filter to analyze image texture (<a href="https://en.wikipedia.org/wiki/Gabor_filter">Gabor Filter</a>), or maybe something super fancy sounding like a <a href="https://en.wikipedia.org/wiki/Histogram_of_oriented_gradients">Histogram of Oriented Gradients</a> (HoG). There’s one slight problem, what do we do if we arent a domain expert with years of research experience?</p>
+<p>I know that was a lot of notation, so I hope you’re still with me! Take a minute to understand this process, with the help of the <a href="#what-is-machine-learning">diagram below</a> for a visual overview.</p>
 
-<p>Enter this story’s main character: <code class="language-plaintext highlighter-rouge">Machine Learning</code>.</p>
+<p>Now how do we pick a good function $\textcolor{gray}{f}$ to represent our cat image? In the “old days” (if you’ve read ML research before 2012, I’m crying with you), expert humans would have done the Representation Learning for everyone else, i.e. used a PhD-worth of domain-specific knowledge to hand-craft good features to represent a cat. For example, maybe we care about</p>
+<ol>
+  <li>Horizontal and vertical edges (<a href="https://en.wikipedia.org/wiki/Canny_edge_detector">Canny Edge Detector</a>)</li>
+  <li>Image texture (<a href="https://en.wikipedia.org/wiki/Gabor_filter">Gabor Filter</a>)</li>
+  <li>Something super fancy sounding (<a href="https://en.wikipedia.org/wiki/Histogram_of_oriented_gradients">Histogram of Oriented Gradients</a> - HoG)</li>
+</ol>
 
-<p>What if we could let a machine <em>learn</em> this function $f$ from the data? That way, we wouldn’t need image processing PhDs to come up with fancy specialized featurizers that, while interpretable, don’t generalize well to new kinds of data.</p>
+<p>There’s one slight problem, what do we do if we arent a domain expert with years of research experience? Enter this story’s main character: <code class="language-plaintext highlighter-rouge">Machine Learning</code>.</p>
 
-<details><summary>Click here to know more about the History of Learning $f$ from Data</summary>
-<p>For Images, this function class $f$ was dominated for a long time by <a href="https://en.wikipedia.org/wiki/Convolutional_neural_network">Convolutional Neural Networks</a>(CNNs), after the CNN <a href="https://en.wikipedia.org/wiki/AlexNet#:~:text=AlexNet%20is%20the%20name%20of,D.">AlexNet</a> kicked off the Deep Learning revolution in 2012. The introduction of the <a href="https://huggingface.co/learn/nlp-course/en/chapter1/4">Transformer architecture</a><d-cite key="vaswani2017attention"></d-cite>, which revolutionized machine learning for text data in 2017, made its way to the image domain in 2021 with Google’s <a href="https://huggingface.co/docs/transformers/en/model_doc/vit">Vision Transformer</a><d-cite key="dosovitskiy2020image"></d-cite> work. These modern Deep Learning methods are also called <code class="language-plaintext highlighter-rouge">Neural Encoders</code> as they learn an encoding of the data that computers can work with using Neural Networks.</p>
+<h3 id="what-is-machine-learning">What is Machine Learning?</h3>
 
-<p>If you’d like to learn more about how popular Neural Encoders learn good functions $f$, I heartily recommend an excellent series of blogs from <a href="https://twitter.com/JayAlammar">Jay Alammar</a>, especially the basics of <a href="https://jalammar.github.io/visual-interactive-guide-basics-neural-networks/">Neural Networks</a> and the <a href="https://jalammar.github.io/illustrated-transformer/">Illustrated Transformer</a>.</p>
+<p>What if we could let a machine <em>learn</em> this function $\textcolor{gray}{f}$ from the data? That way, we wouldn’t need image processing PhDs to come up with fancy specialized featurizers (like Canny, Gabor, and HoG) that, while we understand what they are doing, they don’t generally work well for new kinds of data.</p>
+
+<details><summary>Click here to know more about the History of Learning $\textcolor{gray}{f}$ from Data</summary>
+<p>For Images, this function class $\textcolor{gray}{f}$ was dominated for a long time by <a href="https://en.wikipedia.org/wiki/Convolutional_neural_network">Convolutional Neural Networks</a>(CNNs), after the CNN <a href="https://en.wikipedia.org/wiki/AlexNet#:~:text=AlexNet%20is%20the%20name%20of,D.">AlexNet</a> kicked off the Deep Learning revolution in 2012. The introduction of the <a href="https://huggingface.co/learn/nlp-course/en/chapter1/4">Transformer architecture</a><d-cite key="vaswani2017attention"></d-cite>, which revolutionized machine learning for text data in 2017, made its way to the image domain in 2021 with Google’s <a href="https://huggingface.co/docs/transformers/en/model_doc/vit">Vision Transformer</a><d-cite key="dosovitskiy2020image"></d-cite> work. These modern Deep Learning methods are also called <code class="language-plaintext highlighter-rouge">Neural Encoders</code> as they learn an encoding of the data that computers can work with using Neural Networks.</p>
+
+<p>If you’d like to learn more about how popular Neural Encoders learn good functions $\textcolor{gray}{f}$, I heartily recommend an excellent series of blogs from <a href="https://twitter.com/JayAlammar">Jay Alammar</a>, especially the basics of <a href="https://jalammar.github.io/visual-interactive-guide-basics-neural-networks/">Neural Networks</a> and the <a href="https://jalammar.github.io/illustrated-transformer/">Illustrated Transformer</a>.</p>
 </details>
 
-<p>This is great, now we can offload the expertise of crafting features to a neural network that can learn an encoder function $f$ and a learning algorithm $\mathcal{F}$ that is able to search the space of all possible functions to find (hopefully) a good $f$. But what does it mean to learn a “good” $f$? Let’s take a closer look, and motivate the “Matryoshka” portion of MRL.</p>
+<center><img src="/assets/img/blog/searching_for_functions.png" alt="A simple mechanism to use a learning algorithm to search the function space for a good representation of data" width="600" height="300" /></center>
+<p><br /><br /></p>
+
+<p>This is great, now we can offload the expertise of crafting features to a neural network that can learn an encoder function $\textcolor{gray}{f}$. As seen in the figure above, this workflow involves a learning algorithm $\textcolor{gray}{\mathcal{A}}$ that is able to search the space of all possible functions $\textcolor{gray}{\mathcal{F}}$ to learn (hopefully) a good representation of the data $\textcolor{gray}{z=f(x)}$, i.e. a sequence of $\textcolor{gray}{d}$ numbers our computer can understand.</p>
+
+<p>But what does it mean to learn a “good” representation $\textcolor{gray}{z}$? This question was the inspiration for <code class="language-plaintext highlighter-rouge">Matryoshka</code>.</p>
 
 <h2 id="practical-ml-training">Practical ML Training</h2>
 <h4 id="tldr-1">tl;dr</h4>
 <p>We use proxy “objective functions” to train our models with the hope that they achieve our actual goals.</p>
 
+<h3 id="how-do-we-train-machine-learning-models">How do we Train Machine Learning Models?</h3>
 <p>We train modern Machine Learning models (since 2012, these are typically “Deep”, i.e. very large, and always getting larger!) with some human interpretable goal. For example, we may want a Face Recognition Model to correctly identify employees of a business entering the premises with 99% accuracy. How do we train a model to achieve this? In ML land, we use an objective function, or “loss” to steer our initial (bad) model to update itself iteratively and hopefully do slightly better each time until we hit the 99% accuracy we require.</p>
 
 <details><summary>Click here to know more about Optimization, the Study of how to Train Good ML Models</summary>
@@ -66,12 +94,15 @@ z &amp;= f(x) = W_2 \cdot ReLU(W_1 \cdot x) \in\mathbb{R}^d \\
 y_{guess} &amp;= \text{softmax}(z) \\
 \end{align*}\]
 
-<p>To explain this scary notation: $f$ is our neural encoder from the <a href="#how-do-we-represent-data-for-computers">Representation Learning</a> section, which we choose to model as the simple 2-layer Neural Network above. We have two layers $W_1$ and $W_2$ with a Rectified Linear Unit (ReLU) as an <a href="https://en.wikipedia.org/wiki/Activation_function">activation function</a> in the middle (don’t worry too much about this, it just gives our network a little more ‘capacity’ to learn potentially better functions $f$). Running our input image through this network gives us our learned representation $z$, a sequence of $d$ <a href="https://en.wikipedia.org/wiki/Real_number">real numbers</a> (written in <em>math language</em> as $z\in\mathbb{R}^d$). Finally, we attach a <a href="https://en.wikipedia.org/wiki/Softmax_function">softmax function</a> at the end, which will output two probabilities: $p_\text{cat}$ and $p_\text{not-cat}$, where $p_\text{cat} + p_\text{not-cat} = 1$. We consider whichever probability is higher to be our network’s “guess” for whether $x$ was a cat image or not, i.e. $y_\text{guess}$.</p>
+<p>To explain this scary notation: $\textcolor{gray}{f}$ is our neural encoder from the <a href="#how-do-we-represent-data-for-computers">Representation Learning</a> section, which we choose to model as the simple 2-layer Neural Network above. We have two layers $\textcolor{gray}{W_1}$ and $\textcolor{gray}{W_2}$ with a Rectified Linear Unit (ReLU) as an <a href="https://en.wikipedia.org/wiki/Activation_function">activation function</a> in the middle (don’t worry too much about this, it just gives our network a little more ‘capacity’ to learn potentially better functions $\textcolor{gray}{f}$). Running our input image through this network gives us our learned representation $\textcolor{gray}{z}$, a sequence of $\textcolor{gray}{d}$ <a href="https://en.wikipedia.org/wiki/Real_number">real numbers</a> (written in <em>math language</em> as $\textcolor{gray}{z\in\mathbb{R}^d}$). Finally, we attach a <a href="https://en.wikipedia.org/wiki/Softmax_function">softmax function</a> at the end, which will output two probabilities: $\textcolor{gray}{p_\text{cat}}$ and $\textcolor{gray}{p_\text{not-cat}}$, where $\textcolor{gray}{p_\text{cat} + p_\text{not-cat} = 1}$. We consider whichever probability is higher to be our network’s “guess” for whether $\textcolor{gray}{x}$ was a cat image or not, i.e. $\textcolor{gray}{y_\text{guess}}$. This process is illustrated visually in the diagram below:</p>
 
-<p>Let’s say we choose a good loss to train our model, e.g. a simple <a href="https://en.wikipedia.org/wiki/Cross-entropy">cross-entropy</a> (not important to understand this example). If we test our trained model on 50 unseen cats and 50 unseen dogs, we would hope that $y_{guess} = y_{true}$ on at least 99 of them, to hit our 99% accuracy goal. Take a second to think of what a “bad” model would do in our cat classifier case.</p>
+<center><img src="/assets/img/blog/simple_nn.png" alt="A simple 2-layer neural network computing a guess for whether an image is a cat or not" width="700" height="300" /></center>
+<p><br /><br /></p>
+
+<p>Let’s say we choose a good loss to train our model, e.g. a simple <a href="https://en.wikipedia.org/wiki/Cross-entropy">cross-entropy</a> (not important to understand this example). If we test our trained model on 50 unseen cats and 50 unseen dogs, we would hope that $\textcolor{gray}{y_{guess} = y_{true}}$ on at least 99 of them, to hit our 99% accuracy goal. Take a second to think of what a “bad” model would do in our cat classifier case.</p>
 
 <details><summary>What accuracy will a “bad” binary classification model give?</summary>
-<p>The worst model is one that is completely uncertain about its prediction, because it gives us no useful information about our data. For binary classification, i.e. with two classes (cat vs. not cat), complete uncertainty means our model guesses randomly between cat and not cat, i.e. $\text{accuracy} = 50\%$. What is a “bad” classifier if we had ten classes?</p>
+<p>The worst model is one that is completely uncertain about its prediction, because it gives us no useful information about our data. For binary classification, i.e. with two classes (cat vs. not cat), complete uncertainty means our model guesses randomly between cat and not cat, i.e. $\textcolor{gray}{\text{accuracy} = 50\%}$. What is a “bad” classifier if we had ten classes?</p>
 </details>
 
 <p>Your (suggested) takeaway from this Section should be:</p>
@@ -79,13 +110,13 @@ y_{guess} &amp;= \text{softmax}(z) \\
   <p>Huh, our <strong>human goal</strong> was to classify cats correctly 99% of the time, but our <strong>machine objective</strong> was this scary sounding <code class="language-plaintext highlighter-rouge">cross-entropy</code>. What gives? Why can’t we train our model with a <code class="language-plaintext highlighter-rouge">git-gud-at-cats</code> loss?</p>
 </blockquote>
 
-<p>This is the crux of modern optimization methods: a <code class="language-plaintext highlighter-rouge">misalignment</code> between human goals and the methods we use to train models. In our cat case, we hope that the “cross entropy” is a good proxy for our actual human-specified goal. We will consider this <em>misaligned setting</em> for the rest of this article, but I do provide some optional further reading below on very popular recent efforts towards directly optimizing for human preferences.</p>
+<p>This is the crux of modern optimization methods: a <code class="language-plaintext highlighter-rouge">misalignment</code> between human goals and the methods we use to train models. In our cat case, we hope that the “cross entropy” is a good proxy for our actual human-specified goal. We will consider this <em>misaligned setting</em> for the rest of this article, but I do provide some optional further reading below on very popular recent efforts towards directly <code class="language-plaintext highlighter-rouge">optimizing for human preferences</code>, which is the focus of <code class="language-plaintext highlighter-rouge">my current research</code>.</p>
 
 <details><summary>Click here to read about Modern Efforts to Directly Optimize Human Preferences</summary>
 <p>There has been a lot of recent effort towards <strong>directly</strong> aligning large Machine Learning models to human goals, especially in the realm of Large Language Models, with Reinforcement Learning (RL). This <a href="https://huggingface.co/blog/rlhf">excellent blog post</a> from Lambert et. al<d-cite key="lambert2022illustrating"></d-cite> walks through Reinforcement Learning from Human Feedback (RLHF), which is currently the most popular alignment technique. For Computer Vision nerds, this <a href="https://twitter.com/giffmana/status/1626695378362945541">excellent recent work</a> from Pinto et. al<d-cite key="pinto2023tuning"></d-cite> applies RL techniques to optimize models directly for vision tasks, such as object detection and image captioning.</p>
 </details>
 
-<h2 id="matryoshka-dolls">Matryoshka :dolls:</h2>
+<h1 id="matryoshka">Matryoshka</h1>
 
 <p>Alright, so you now hopefully have a basic understanding of</p>
 <ol>
@@ -104,28 +135,131 @@ y_{guess} &amp;= \text{softmax}(z) \\
 <p>So how DO we know how “good” a representation is? Do we just have faith in our corporate overlords? Maybe Let’s use that as a backup option. Let’s instead define a notion of “goodness” which is directly tied to tasks we care about; after all, we want our representations to be practically useful. For example, the <a href="https://google-research.github.io/task_adaptation/">Visual Task Adaptation Benchmark</a> (VTAB) is a suite of 19 tasks designed to test how generally “good” a visual representation is on things it has not been trained on, which is sometimes called <a href="https://developers.google.com/machine-learning/crash-course/generalization/video-lecture">generalizability</a> or <a href="https://en.wikipedia.org/wiki/Robustness_(computer_science)">robustness</a> of representations. This is a great starting point, i.e. exhaustive benchmarking and evaluation! Is this our holy grail, the “best” representation? Spoiler: it’s not quite that simple!</p>
 </details>
 
-<h3 id="what-led-to-mrl">What Led to MRL?</h3>
-<p>Recall that <a href="#how-do-we-represent-data-for-computers">we said above</a> that the representation learned by our Neural Encoder for our input data $x$ is a sequence of $d$ numbers, i.e. $z = f(x) \in \mathbb{R}^d$. I now ask you the question that led to Matryoshka Representation Learning:</p>
+<h2 id="what-led-to-creating-mrl">What Led to Creating MRL?</h2>
+<p>Recall that <a href="#how-do-we-represent-data-for-computers">we said above</a> that the representation $\textcolor{gray}{z}$ learned by our Neural Encoder $\textcolor{gray}{f}$ for our input data $\textcolor{gray}{x}$ is a sequence of $\textcolor{gray}{d}$ numbers, i.e. $\textcolor{gray}{z = f(x) \in \mathbb{R}^d}$. I now ask you the question that led to Matryoshka Representation Learning:</p>
 
 <blockquote>
-  <p>What is the best choice of data dimensionality $d$ to learn a “good” representation? And is this the same value for all kinds of data? 
-If your answer to this question was <strong>Hmm probably not</strong> then your thought process is exactly where we (the MRL authors) were in Late 2021.</p>
+  <p>What is the best choice of data dimensionality $\textcolor{gray}{d}$ to learn a “good” representation? And is this the same value for all kinds of data? 
+If your answer to this question was <code class="language-plaintext highlighter-rouge">Hmm probably not</code> then your thought process is exactly where we (the MRL authors) were in Late 2021.</p>
 </blockquote>
 
-<p>Let’s illustrate this idea concretely with an example from the MRL paper<d-cite key="kusupati2022matryoshka"></d-cite>, Figure 9a. The leftmost image in the row is <strong>GT: Sweatshirt</strong>, which is the <em>Ground Truth</em> (GT) of the data, i.e. what we consider the <em>true</em> label, $y_\text{true} =$ <strong>Sweatshirt</strong>. You can think of the other 4 images as what the model is “$\textcolor{green}{\text{looking at}}$” to make a decision about what this image represents.  Each of these 4 images is using a different $\textcolor{orange}{d}$-dimensional representation of the image to make its decision, with $d \in (\textcolor{orange}{8, 16, 32, 2048})$, and the predicted label $y_\text{pred}$ above each image. We can think of a larger $\textcolor{orange}{d}$ value as being able to represent “more information” about the image (because there are more numbers to represent this information!)</p>
+<p>Let’s illustrate this idea concretely with an example from the MRL paper<d-cite key="kusupati2022matryoshka"></d-cite>, Figure 9a. The leftmost image in the row is <strong>GT: Sweatshirt</strong>, which is the <em>Ground Truth</em> (GT) of the data, i.e. what we consider the <em>true</em> label, $\textcolor{gray}{y_\text{true} =}$ <strong>Sweatshirt</strong>. You can think of the other 4 images as what the model is “$\textcolor{green}{\text{looking at}}$” to make a decision about what this image represents.  Each of these 4 images is using a different $\textcolor{orange}{d}$-dimensional representation of the image to make its decision, with $\textcolor{gray}{d \in} (\textcolor{orange}{8, 16, 32, 2048})$, and the predicted label $\textcolor{gray}{y_\text{pred}}$ above each image. We can think of a larger $\textcolor{orange}{d}$ value as being able to represent “more information” about the image (because there are more numbers to represent this information!)</p>
 
 <center><img src="/assets/img/blog/mrl-embedding-capacity.png" alt="Demonstrating the embedding capacity required by varying complexity of images" width="700" height="200" /></center>
+<p><br /><br /></p>
 
-<p>As we can see, with very small dimensionality $\textcolor{orange}{d}$, the model makes a mistake and thinks the image is <strong>Sunglasses</strong>, which we can see with $\textcolor{green}{\text{where the model is looking}}$. When we increase $\textcolor{orange}{d=32}$, the model is able to shift its focus more to <strong>Sweatshirt</strong> and get the prediction correct, and it stays correct until $\textcolor{orange}{d=2048}$. This means we could have easily just used a $\dfrac{2048}{32} = 64\times$ smaller embedding to correctly predict this image!</p>
+<p>As we can see, with very small dimensionality $\textcolor{orange}{d}$, the model makes a mistake and thinks the image is <strong>Sunglasses</strong>, which we can see with $\textcolor{green}{\text{where the model is looking}}$. When we increase $\textcolor{orange}{d=32}$, the model is able to shift its focus more to <strong>Sweatshirt</strong> and get the prediction correct, and it stays correct until $\textcolor{orange}{d=2048}$. This means we could have easily just used a $\textcolor{gray}{\dfrac{2048}{32} = 64\times}$ smaller embedding to correctly predict this image!</p>
 
-<p>It makes sense to use the smallest $d$ that works for every data point, because we can save memory (less numbers = less memory) and run faster inference, i.e. compute $y_\text{guess}$ as shown in the <a href="#practical-ml-training">ML Training</a> section.</p>
+<p>It makes sense to use the smallest $\textcolor{gray}{d}$ that works for every data point, because we can save memory (less numbers = less memory) and run faster inference, i.e. compute $\textcolor{gray}{y_\text{guess}}$ as shown in the <a href="#practical-ml-training">ML Training</a> section.</p>
 
-<p>There’s one problem: machine learning models are trained with fixed data dimensionality $d$. For ResNet-50<d-cite key="he2016deep"></d-cite>, an extremely popular CNN, $d=2048$. For OpenAI’s <a href="https://openai.com/blog/new-embedding-models-and-api-updates">latest embedding model</a> <code class="language-plaintext highlighter-rouge">text-embedding-3-large</code>, $d=3072$. If we want a smaller $d$, the prevalent methods were to use traditional <a href="https://en.wikipedia.org/wiki/Dimensionality_reduction">dimensionality reduction</a> techniques, such as <a href="https://en.wikipedia.org/wiki/Principal_component_analysis">Principal Component Analysis</a>. The problem with these methods is that they operate “post-hoc” after our $d$-dimensional embedding as been learned by our Neural Encoder, and are thus not data-aware or learned. Is there a way to automatically learn these lower dimensional embeddings without training separate models every time?</p>
+<p>There’s one problem: machine learning models are trained with fixed data dimensionality $\textcolor{gray}{d}$. For ResNet-50<d-cite key="he2016deep"></d-cite>, an extremely popular CNN, $\textcolor{gray}{d=2048}$. For OpenAI’s <a href="https://openai.com/blog/new-embedding-models-and-api-updates">latest embedding model</a> <code class="language-plaintext highlighter-rouge">text-embedding-3-large</code>, $\textcolor{gray}{d=3072}$. If we want a smaller $\textcolor{gray}{d}$, the prevalent methods were to use traditional <a href="https://en.wikipedia.org/wiki/Dimensionality_reduction">dimensionality reduction</a> techniques, such as <a href="https://en.wikipedia.org/wiki/Principal_component_analysis">Principal Component Analysis</a>. The problem with these methods is that they operate “post-hoc” after our $\textcolor{gray}{d}$-dimensional embedding as been learned by our Neural Encoder, and are thus not data-aware or learned. Is there a way to automatically learn these lower dimensional embeddings without training separate models every time?</p>
 
-<h3 id="finally-enter-mrl">Finally, Enter MRL</h3>
-<p>MRL learns these lower-dimensional embeddings baked into the original embedding, just like a series of Matryoshka Dolls! For example, the $\textcolor{red}{\text{smallest doll}}$ represents $d=8$, which sits inside a $\textcolor{orange}{\text{slightly larger doll}}$ with $d=16$, which sits inside an $\textcolor{blue}{\text{even larger doll}}$, until we reach the $\textcolor{Gray}{\text{\textbf{largest doll}}}$ with $d=2048$.</p>
+<h2 id="what-is-mrl-really-this-time">What is MRL? (Really this Time)</h2>
+<p>MRL learns these lower-dimensional embeddings baked into the original embedding, just like a series of Matryoshka Dolls! For example, the $\textcolor{red}{\text{smallest doll}~z_{1:8}}$ represents $\textcolor{red}{d=8}$, which sits inside a $\textcolor{orange}{\text{slightly larger doll}~z_{1:16}}$ with $\textcolor{orange}{d=16}$, which sits inside an $\textcolor{blue}{\text{even larger doll}~z_{1:32}}$, until we reach the $\textcolor{Gray}{\text{\textbf{largest doll}}~z_{1:2048}}$ with $\textcolor{gray}{d=2048}$, as seen in the figure below. Hereon, I will interchangeably use <code class="language-plaintext highlighter-rouge">dolls</code> to refer to <code class="language-plaintext highlighter-rouge">representations learned by MRL</code>.</p>
 
 <center><img src="/assets/img/blog/mrl-method.png" alt="Demonstrating the MRL methodology" width="600" height="300" /></center>
+<p><br /><br /></p>
+
+<details><summary>What are those symbols under “Training”?</summary>
+<p>MRL is primarily a training paradigm to learn a nested structure of representations, resembling Matryoshka dolls. So how do we train a model to enforce this structure? It’s actually surprisingly simple! We apply the same <code class="language-plaintext highlighter-rouge">cross-entropy loss</code> we would have used for a plain old regular model (just the $\textcolor{Gray}{\text{\textbf{largest doll}}~z_{1:2048}}$) to each doll independently, and average all these losses together:</p>
+
+\[\begin{align*}
+\mathcal{L_\text{Regular}} &amp;= \mathcal{L}(z_{1:2048}) \\
+\mathcal{L_\text{Matryoshka}} &amp;= \text{average}\left(\mathcal{L}(z_{1:8}) + \mathcal{L}(z_{1:16}) + ... + \mathcal{L}(z_{1:2048})\right)
+\end{align*}\]
+
+<p>This simple modification forces the model to learn dolls that are valid and useful representations of the data by themselves! This means we can freely use whichever doll fits our purpose (budget vs accuracy).</p>
+</details>
+
+<h2 id="how-good-is-mrl">How Good is MRL?</h2>
+<p>You may be wondering, how does learning Matryoshka dolls compare to training a new doll from scratch at different dimensionality $\textcolor{gray}{d}$ every time? While training all dolls at once with MRL is much more efficient, surely each MRL doll’s performance will be <strong>worse</strong> than than its corresponding independently trained doll?</p>
+
+<p>We were pleasantly surprised to discover that <code class="language-plaintext highlighter-rouge">MRL dolls outperform independently trained dolls at each dimensionality</code>, as seen in the figures below from the MRL paper<d-cite key="kusupati2022matryoshka"></d-cite>, at both:</p>
+
+<p>(a) <code class="language-plaintext highlighter-rouge">Million scale</code> on <a href="https://en.wikipedia.org/wiki/ImageNet">ImageNet-1K</a> with a ResNet-50<d-cite key="he2016deep"></d-cite> Neural Encoder at $\textcolor{gray}{d_\text{ImageNet} \in (8, 16, … , 2048)}$</p>
+
+<p>(b) <code class="language-plaintext highlighter-rouge">Billion scale</code> on JFT-300M<d-cite key="sun2017revisiting"></d-cite> with ViT B/16<d-cite key="dosovitskiy2020image"></d-cite> and <a href="https://blog.research.google/2021/05/align-scaling-up-visual-and-vision.html?m=0">ALIGN</a> Neural Encoders with $\textcolor{gray}{d_\text{JFT} \in (12, 24, … , 768)}$</p>
+
+<div class="mrl-results">
+    <div>
+        <img src="/assets/img/blog/mrl-r50-imagenet.png" alt="MRL with ResNet50 models on ImageNet show strong performance at all doll sizes" width="300" height="20" />
+        <p>a) ResNet-50 1-NN Accuracy on ImageNet</p>
+    </div>
+    <div>
+        <img src="/assets/img/blog/mrl-vit-align-jft.png" alt="MRL performance seamlessly scales to billion scale data" width="300" height="200" />
+        <p>b) ViT B/16 and ALIGN 1-NN Accuracy on JFT</p>
+    </div>
+</div>
+
+<p>In summary, MRL provides little to no accuracy drop for large efficiency gains across:</p>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">Data Scale</code> - million to billion</li>
+  <li><code class="language-plaintext highlighter-rouge">Data Modality</code> - vision, language, vision + language</li>
+  <li><code class="language-plaintext highlighter-rouge">Neural Encoder Architecture</code> - ResNet-50, ConvNeXt<d-cite key="liu2022convnet"></d-cite>, ViT, <a href="https://en.wikipedia.org/wiki/BERT_(language_model)">BERT</a>, ALIGN</li>
+</ol>
+
+<h1 id="using-mrl">Using MRL</h1>
+
+<h2 id="web-scale-search">Web-Scale Search!</h2>
+<p>Now what can we do with this collection of dolls? You might have gotten a hint from the diagram <a href="#finally-enter-mrl">above</a>, but if not, <code class="language-plaintext highlighter-rouge">Matryoshka</code> enables a strong information retrieval setup, just like how Google shows you your favorite cat pics when you search for them! Here’s a walkthrough of what that might look like:</p>
+
+<h3 id="encode-your-data">Encode your Data</h3>
+<p>Use the largest doll that fits in your budget to encode all cat pictures on the internet into a database $\textcolor{gray}{X_{Mat}}$. For example, say you have 50 Million cat images (please share them with me) and 100 Gigabytes of storage. With <a href="https://en.wikipedia.org/wiki/Single-precision_floating-point_format">fp32 precision</a></p>
+<ol>
+  <li>The smallest doll $\textcolor{gray}{d=8}$ would occupy $\textcolor{gray}{8 * 4 = 32}$ bytes of memory, and thus $\textcolor{gray}{X_{Mat}}$ would occupy $\textcolor{gray}{50,000,000 * 32 = 400}$ Megabytes on disk. We are only using 0.4% of our 100GB budget, we can go much higher!</li>
+  <li>The largest doll $\textcolor{gray}{d=2048}$ would occupy $\textcolor{gray}{2048 * 4 = 8192}$ bytes of memory, and thus $\textcolor{gray}{X_{Mat}}$ would occupy $\textcolor{gray}{50,000,000 * 8192 = 409.6}$ Gigabytes on disk. The largest doll is too big to fit into our 100 GB memory budget, we need something in the middle!</li>
+  <li>With some <a href="https://www.youtube.com/watch?v=3M_5oYU-IsU&amp;ab_channel=MichaelDapaah">quick mafs</a> calculations, we see that we can use a doll of size $\textcolor{gray}{d=500}$, since $\textcolor{gray}{X_{Mat}}$ would occupy $\textcolor{gray}{50,000,000 * 500 * 4 = 100}$ Gigabytes exactly.</li>
+</ol>
+
+<h3 id="build-a-search-index">Build a Search Index</h3>
+<p>Now that we have encoded our data with MRL, we need a way to search for relevant cat pictures, using a <code class="language-plaintext highlighter-rouge">search index</code> built on top of our database $\textcolor{gray}{X_{Mat}}$! To speak more corporately, Meta uses hierarchical graph indices<d-cite key="malkov2018efficient"></d-cite>, Microsoft uses hybrid SSD-Disk graph indices<d-cite key="jayaram2019diskann"></d-cite>, Google uses tree indices<d-cite key="sivic2003video"></d-cite> and sophisticated Vector Quantization techniques<d-cite key="guo2020accelerating"></d-cite>, to name a few.</p>
+
+<h3 id="searching-a-query">Searching a Query</h3>
+<p>Let’s say we want to find the best “Derpy Orange Cat” in our database. We’ll use the search index to find the 50 closest matches (in ML terminology, “Nearest Neighbors”), and hopefully serve a very happy customer! MRL has enabled us to <code class="language-plaintext highlighter-rouge">use a high-dimensional embedding "for free"</code>, since we didn’t have to train or finetune a separate 500-dimensional doll to encode our database, or use dimensionality reduction methods on our largest doll.</p>
+
+<h3 id="hold-on-a-minute-can-we-just-use-any-doll">Hold on a Minute, Can we Just Use any Doll?</h3>
+<blockquote>
+  <p>You may have already asked the question: Hey, we only trained MRL at specific doll sizes $\textcolor{gray}{d_{ImageNet}}$ and $\textcolor{gray}{d_{JFT}}$. Can we just use any doll of size $\textcolor{gray}{d}$ that doesn’t lie in these specific values we used to train the MRL model?</p>
+</blockquote>
+
+<center>
+<img src="/assets/img/blog/mrl-interpolate.png" alt="Demonstrating MRL's interpolation behavior at dimensionalities it was not trained on" width="400" height="300" />
+<p> MRL model accuracies interpolate! </p>
+</center>
+
+<p><br /><br /></p>
+
+<p>It turns that yes, you can - <code class="language-plaintext highlighter-rouge">MRL model accuracies seamlessly interpolate at all doll sizes</code> between the fixed doll sizes it was trained for ($\textcolor{gray}{d_{ImageNet}}$ and $\textcolor{gray}{d_{JFT}}$)! This means we can freely, in the words of OpenAI, “remove some numbers from the end of the sequence” of any representation, and use that embedding directly! I’m not going to make a doll analogy for this because the thought is quite gruesome.</p>
+
+<h2 id="so-what-is-the-catch">So What is the Catch?</h2>
+<p>None! Please go train MRL models on huge datasets with huge transformers and open source your work!</p>
+
+<p>And that, dear reader, is the biggest catch: MRL models have a <code class="language-plaintext highlighter-rouge">one-time cost of retraining from scratch</code> to match independently trained models. We discovered that this can be alleviated to a large extent by unfreezing some of the last layers of the Neural Encoder and finetuning for several epochs (See Table 26 in the MRL paper<d-cite key="kusupati2022matryoshka"></d-cite>), but this does not recover from-scratch training performance fully, especially for smaller dolls ($\textcolor{gray}{d \leq 32}$).</p>
+
+<h2 id="open-source-mrl-models">Open-Source MRL Models</h2>
+<p>Here are some freely available open-source MRL models to play around with!</p>
+<ol>
+  <li>ResNet-18/34/50/101 MRL and independent baseline models trained on ImageNet-1K: <a href="https://huggingface.co/aniketr/mrl-resnet50">huggingface.co/aniketr/mrl-resnet50</a></li>
+  <li>ConvNeXt-Tiny trained on ImageNet-1K: <a href="https://huggingface.co/aniketr/mrl-convnext-tiny">huggingface.co/aniketr/mrl-convnext-tiny</a></li>
+  <li>BERT-Base models finetuned on Natural Questions: <a href="https://huggingface.co/aniketr/mrl-nq">huggingface.co/aniketr/mrl-nq</a></li>
+</ol>
+
+<h2 id="thoughts-get-in-touch">Thoughts? Get in Touch!</h2>
+<p>I know this was quite a long article, so thanks for sticking around, and I hope you got something useful out of it!</p>
+
+<p>If you’re an ML or CS researcher and have thoughts or questions about our work or improving this article, I would love to have chat about <code class="language-plaintext highlighter-rouge">MRL</code>, our followup work, and my current research.</p>
+
+<p>If you’re someone who is generally interested in our work and found this article interesting, difficult, or relevant, I’d love to hear from you too!</p>
+
+<p>Please get in touch with me via <code class="language-plaintext highlighter-rouge">aniketr@cs.wisc.edu</code> or on my twitter <a href="https://twitter.com/wregss">@wregss</a>.</p>
+
+<h2 id="further-reading">Further Reading</h2>
+<ol>
+  <li><a href="https://arxiv.org/abs/2106.01487">LLC: Accurate, Multi-purpose Learnt Low-dimensional Binary Codes</a> - learning low-dimensional binary codes for classes and instances for data, e.g. class = “Dog” and instance = a specific German Shepherd Image.</li>
+  <li><a href="https://arxiv.org/abs/2305.19435">AdANNS: A Framework for Adaptive Semantic Search</a> - using adaptive representations (via MRL) to flexibly decouple all stages of a large scale search system and provide strong accuracy-compute tradeoff for all deployment budgets. Currently in use at Google Search.</li>
+  <li><a href="https://arxiv.org/abs/2310.07707">MatFormer: Nested Transformer for Elastic Inference</a> - using MRL in the weight space of a Transformer to extract hundreds of smaller transformers after a single training pass.</li>
+  <li><a href="https://www.pinecone.io/learn/series/faiss/">Pinecone blogs on Vector Search Components</a> - a series of excellent blog posts by <a href="https://twitter.com/jamescalam">James Briggs</a> on the various components of vector search at scale, including search space pruning and vector quantization techniques.</li>
+</ol>
 
 <!-- ---
 

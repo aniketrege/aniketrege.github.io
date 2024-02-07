@@ -118,7 +118,7 @@ pagination:
   enabled: true
 
 # Comments
- disqus_shortname: https-aniketrege-github-io # put your disqus shortname
+#  disqus_shortname: https-aniketrege-github-io # put your disqus shortname
 # https://help.disqus.com/en/articles/1717111-what-s-a-shortname
 
 # External sources.

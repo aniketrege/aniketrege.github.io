@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="https://aniketrege.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aniketrege.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2024-02-07T07:03:20+00:00</updated><id>https://aniketrege.github.io/feed.xml</id><title type="html">blank</title><subtitle>A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="https://aniketrege.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://aniketrege.github.io/" rel="alternate" type="text/html" hreflang="en" /><updated>2024-02-08T00:22:40+00:00</updated><id>https://aniketrege.github.io/feed.xml</id><title type="html">blank</title><subtitle>A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
 </subtitle><entry><title type="html">Matryoshka Representation Learning (MRL) from the Ground Up</title><link href="https://aniketrege.github.io/blog/2024/mrl/" rel="alternate" type="text/html" title="Matryoshka Representation Learning (MRL) from the Ground Up" /><published>2024-02-07T00:00:00+00:00</published><updated>2024-02-07T00:00:00+00:00</updated><id>https://aniketrege.github.io/blog/2024/mrl</id><content type="html" xml:base="https://aniketrege.github.io/blog/2024/mrl/"><![CDATA[<blockquote>
   <p>This article is best suited for ML practitioners and researchers, but is written in an attempt to be accessible to anyone interested in machine learning, artificial intelligence, and tech.
 Reading Time Estimates:</p>
@@ -16,6 +16,10 @@ Reading Time Estimates:</p>
   <li>Improved Search latency (smaller embeddings = faster search)</li>
   <li><strong>Critical</strong>: What if the biggest embedding isn’t the best? And what does <em>the best</em> even mean?</li>
 </ol>
+
+<center>
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Update: thanks <a href="https://twitter.com/owencm?ref_src=twsrc%5Etfw">@owencm</a> and <a href="https://twitter.com/OpenAI?ref_src=twsrc%5Etfw">@OpenAI</a> for clarifying that shortening embeddings are based on MRL and thanks for sending the blog for edit. Many thanks to <a href="https://twitter.com/owencm?ref_src=twsrc%5Etfw">@owencm</a> for being super generous in their response ♥️ We all win by pushing open research and appropriate attribution! <a href="https://t.co/GbJBgzWwO5">https://t.co/GbJBgzWwO5</a></p>&mdash; Prateek Jain (@jainprateek_) <a href="https://twitter.com/jainprateek_/status/1751479439052140622?ref_src=twsrc%5Etfw">January 28, 2024</a></blockquote> <script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</center>
 
 <p>This property emerged in the new models due to a mysterious and unspecified “technique”. After some <a href="https://twitter.com/jainprateek_/status/1751479439052140622">very minor subtweeting</a>, OpenAI kindly <a href="https://twitter.com/owencm/status/1751409104713826666">updated their blog post</a> to remove this shroud of mystery to reveal this technique: :nesting_dolls: Matryoshka Representation Learning<d-cite key="kusupati2022matryoshka"></d-cite> :nesting_dolls:, which you should fully understand from this single GIF:</p>
 
@@ -252,7 +256,11 @@ If your answer to this question was <code class="language-plaintext highlighter-
 
 <p>If you’re someone who is generally interested in our work and found this article interesting, difficult, or relevant, I’d love to hear from you too!</p>
 
-<p>Please get in touch with me via <code class="language-plaintext highlighter-rouge">aniketr@cs.wisc.edu</code> or on my twitter <a href="https://twitter.com/wregss">@wregss</a>.</p>
+<p>Please get in touch with me via <code class="language-plaintext highlighter-rouge">aniketr@cs.wisc.edu</code> or join the discussion on my Twitter:</p>
+
+<center>
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">With all the recent hype around 🪆Matryoshka Representation Learning 🪆(Thanks <a href="https://twitter.com/OpenAI?ref_src=twsrc%5Etfw">@OpenAI</a> !), I finally put my longstanding plan of writing a detailed blog about MRL to action<a href="https://t.co/guGZRSxxDo">https://t.co/guGZRSxxDo</a><br /><br />This blog is NOT a paper walkthrough (see <a href="https://twitter.com/RitvikRastogi19?ref_src=twsrc%5Etfw">@RitvikRastogi19</a> for that!)<br /><br />(1/7)</p>&mdash; Aniket Rege (@wregss) <a href="https://twitter.com/wregss/status/1755266172868571597?ref_src=twsrc%5Etfw">February 7, 2024</a></blockquote> <script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</center>
 
 <h2 id="further-reading">Further Reading</h2>
 <ol>

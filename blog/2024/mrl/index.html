@@ -200,11 +200,13 @@
               <li><a href="#what-led-to-creating-mrl">What Led to Creating MRL?</a></li>
               <li><a href="#what-is-mrl-really-this-time">What is MRL? (Really this Time)</a></li>
               <li><a href="#how-good-is-mrl">How Good is MRL?</a></li>
+              <li><a href="#why-does-mrl-work">Why Does MRL Work?</a></li>
               
             </ul>
 <div><a href="#using-mrl">Using MRL</a></div>
             <ul>
               <li><a href="#web-scale-search">Web-Scale Search</a></li>
+              <li><a href="#adaptive-retrieval">Adaptive Retrieval</a></li>
               <li><a href="#so-what-is-the-catch">So What is the Catch?</a></li>
               <li><a href="#open-source-mrl-models">Open-Source MRL Models</a></li>
               
@@ -226,6 +228,11 @@ Reading Time Estimates:</p>
   </ol>
 </blockquote>
 
+<h3 id="edits">Edits</h3>
+<ol>
+  <li>Feb. 14, 2024: added new detailed Sections for <a href="#why-does-mrl-work">Why Does MRL Work</a> and <a href="#adaptive-retrieval">Adaptive Retrieval</a>. Also added additional details behind creating MRL with <a href="#ml-researcher-bonus-inklings-of-nested-codebook-subspaces">nested low dimensional codebooks</a> and links to excellent <a href="#further-reading">blogs</a> and <a href="#open-source-mrl-models">products</a> using MRL!</li>
+</ol>
+
 <h1 id="what-is-mrl">What is MRL?</h1>
 <p>If you keep yourself updated on OpenAI’s blog posts, you may have seen the recent release of <a href="https://openai.com/blog/new-embedding-models-and-api-updates" rel="external nofollow noopener noopener noreferrer" target="_blank">new embedding models</a>, which included support for <em>shortening embeddings</em>, where developers could simply “remove some numbers from the end of a sequence” and still maintain a valid representation for text. Why is this cool?</p>
 <ol>
@@ -236,7 +243,7 @@ Reading Time Estimates:</p>
 </ol>
 
 <center>
-<blockquote class="twitter-tweet">
+<blockquote class="twitter-tweet" data-theme="dark">
 <p lang="en" dir="ltr">Update: thanks <a href="https://twitter.com/owencm?ref_src=twsrc%5Etfw" rel="external nofollow noopener noopener noreferrer" target="_blank">@owencm</a> and <a href="https://twitter.com/OpenAI?ref_src=twsrc%5Etfw" rel="external nofollow noopener noopener noreferrer" target="_blank">@OpenAI</a> for clarifying that shortening embeddings are based on MRL and thanks for sending the blog for edit. Many thanks to <a href="https://twitter.com/owencm?ref_src=twsrc%5Etfw" rel="external nofollow noopener noopener noreferrer" target="_blank">@owencm</a> for being super generous in their response ♥️ We all win by pushing open research and appropriate attribution! <a href="https://t.co/GbJBgzWwO5" rel="external nofollow noopener noopener noreferrer" target="_blank">https://t.co/GbJBgzWwO5</a></p>— Prateek Jain (@jainprateek_) <a href="https://twitter.com/jainprateek_/status/1751479439052140622?ref_src=twsrc%5Etfw" rel="external nofollow noopener noopener noreferrer" target="_blank">January 28, 2024</a>
 </blockquote> <script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 </center>
@@ -359,13 +366,38 @@ y_{guess} &amp;= \text{softmax}(z) \\
 </blockquote>
 
 <details><summary>Click here to Think more about this Question</summary>
-<p>But first, another question: instead of training our simple <a href="#practical-ml-training">cat classifier example</a> above, can we just use a large <a href="https://en.wikipedia.org/wiki/Foundation_model" rel="external nofollow noopener noopener noreferrer" target="_blank">“foundation” model</a> that someone has already trained that has a good understanding of animals, and somehow <em>transfer</em> that knowledge to directly guess whether an image is a cat? (Some examples include Google’s <a href="https://blog.research.google/2023/03/scaling-vision-transformers-to-22.html" rel="external nofollow noopener noopener noreferrer" target="_blank">ViT</a>, Meta’s <a href="https://ai.meta.com/blog/dino-v2-computer-vision-self-supervised-learning/" rel="external nofollow noopener noopener noreferrer" target="_blank">DINO</a>, OpenAI’s <a href="https://openai.com/research/clip" rel="external nofollow noopener noopener noreferrer" target="_blank">CLIP</a> and Microsoft’s <a href="https://www.microsoft.com/en-us/research/project/llava-large-language-and-vision-assistant/" rel="external nofollow noopener noopener noreferrer" target="_blank">LLaVa</a>) This process is called <a href="https://www.v7labs.com/blog/transfer-learning-guide" rel="external nofollow noopener noopener noreferrer" target="_blank">transfer learning</a>, and is a huge part of what makes modern Deep Learning accessible to researchers and smaller companies with limited resources: we can’t all afford to <a href="https://www.forbes.com/sites/craigsmith/2023/09/08/what-large-models-cost-you--there-is-no-free-ai-lunch/?sh=7f09d5e24af7" rel="external nofollow noopener noopener noreferrer" target="_blank">spend millions of dollars</a> training our models!</p>
+<p>But first, another question: instead of training our simple <a href="#practical-ml-training">cat classifier example</a> above, can we just use a large <a href="https://en.wikipedia.org/wiki/Foundation_model" rel="external nofollow noopener noopener noreferrer" target="_blank">“foundation” model</a> that someone has already trained that has a good understanding of animals, and somehow <em>transfer</em> that knowledge to directly guess whether an image is a cat? (Some examples include Google’s <a href="https://blog.research.google/2023/03/scaling-vision-transformers-to-22.html" rel="external nofollow noopener noopener noreferrer" target="_blank">ViT</a>, Meta’s <a href="https://ai.meta.com/blog/dino-v2-computer-vision-self-supervised-learning/" rel="external nofollow noopener noopener noreferrer" target="_blank">DINO</a>, OpenAI’s <a href="https://openai.com/research/clip" rel="external nofollow noopener noopener noreferrer" target="_blank">CLIP</a> and Microsoft’s <a href="https://www.microsoft.com/en-us/research/project/llava-large-language-and-vision-assistant/" rel="external nofollow noopener noopener noreferrer" target="_blank">LLaVa</a>). This process is called <a href="https://www.v7labs.com/blog/transfer-learning-guide" rel="external nofollow noopener noopener noreferrer" target="_blank">transfer learning</a>, and is a huge part of what makes modern Deep Learning accessible to researchers and smaller companies with limited resources: we can’t all afford to <a href="https://www.forbes.com/sites/craigsmith/2023/09/08/what-large-models-cost-you--there-is-no-free-ai-lunch/?sh=7f09d5e24af7" rel="external nofollow noopener noopener noreferrer" target="_blank">spend millions of dollars</a> training our models!</p>
 
-<p>So how DO we know how “good” a representation is? Do we just have faith in our corporate overlords? Maybe Let’s use that as a backup option. Let’s instead define a notion of “goodness” which is directly tied to tasks we care about; after all, we want our representations to be practically useful. For example, the <a href="https://google-research.github.io/task_adaptation/" rel="external nofollow noopener noopener noreferrer" target="_blank">Visual Task Adaptation Benchmark</a> (VTAB) is a suite of 19 tasks designed to test how generally “good” a visual representation is on things it has not been trained on, which is sometimes called <a href="https://developers.google.com/machine-learning/crash-course/generalization/video-lecture" rel="external nofollow noopener noopener noreferrer" target="_blank">generalizability</a> or <a href="https://en.wikipedia.org/wiki/Robustness_(computer_science)" rel="external nofollow noopener noopener noreferrer" target="_blank">robustness</a> of representations. This is a great starting point, i.e. exhaustive benchmarking and evaluation! Is this our holy grail, the “best” representation? Spoiler: it’s not quite that simple!</p>
+<p>So how DO we know how “good” a representation is? Do we just have faith in our corporate overlords? Maybe let’s use that as a backup option. Let’s instead define a notion of “goodness” which is directly tied to tasks we care about; after all, we want our representations to be practically useful. For example, the <a href="https://google-research.github.io/task_adaptation/" rel="external nofollow noopener noopener noreferrer" target="_blank">Visual Task Adaptation Benchmark</a> (VTAB) is a suite of 19 tasks designed to test how generally “good” a visual representation is on things it has not been trained on, which is sometimes called <a href="https://developers.google.com/machine-learning/crash-course/generalization/video-lecture" rel="external nofollow noopener noopener noreferrer" target="_blank">generalizability</a> or <a href="https://en.wikipedia.org/wiki/Robustness_(computer_science)" rel="external nofollow noopener noopener noreferrer" target="_blank">robustness</a> of representations. This is a great starting point, i.e. exhaustive benchmarking and evaluation! <code class="language-plaintext highlighter-rouge">Is this our holy grail, the "best" representation</code>?</p>
+
+<p>Spoiler: it’s not quite that simple, because we can’t exhaustively benchmark our representation in <em>all</em> tasks and scenarios!</p>
 </details>
 
 <h2 id="what-led-to-creating-mrl">What Led to Creating MRL?</h2>
-<p>Recall that <a href="#how-do-we-represent-data-for-computers">we said above</a> that the representation $\textcolor{gray}{z}$ learned by our Neural Encoder $\textcolor{gray}{f}$ for our input data $\textcolor{gray}{x}$ is a sequence of $\textcolor{gray}{d}$ numbers, i.e. $\textcolor{gray}{z = f(x) \in \mathbb{R}^d}$. I now ask you the question that led to Matryoshka Representation Learning:</p>
+
+<h3 id="ml-researcher-bonus-inklings-of-nested-codebook-subspaces">ML Researcher Bonus: Inklings of Nested Codebook Subspaces</h3>
+<p>Hold on a second, nested subspaces? Codebooks? What does this all mean? Let’s first <a href="#codebooks-to-embeddings">look at what MRL is</a> under the hood, and circle back here once we’ve understood how MRL works.</p>
+
+<blockquote>
+  <p>Have you circled back? Yay! Think of MRL as extending LLC from learning $\textcolor{gray}{k}$-bit binary codes to $\textcolor{gray}{d}$-dimensional embeddings.
+See the <a href="#the-marginal-utility-of-increasing-information">understanding why MRL works</a> section for a walkthrough of what <code class="language-plaintext highlighter-rouge">nested subspaces</code> are, with the help of Calvin and Hobbes!</p>
+</blockquote>
+
+<p>The motivation for MRL was sparked from work in 2021 by <a href="https://homes.cs.washington.edu/~kusupati/" rel="external nofollow noopener noopener noreferrer" target="_blank">Kusupati</a> et. al on learning low-dimensional codebooks (LLC)<d-cite key="kusupati2021llc"></d-cite>. LLC learns representations that are tiny binary codes, i.e. $\textcolor{gray}{z}$ is just $\textcolor{gray}{k}$ <a href="https://en.wikipedia.org/wiki/Bit" rel="external nofollow noopener noopener noreferrer" target="_blank">bits</a> instead of $\textcolor{gray}{d}$ real-valued numbers. LLC was able to train <code class="language-plaintext highlighter-rouge">nested codebooks</code> with $\textcolor{gray}{k \in(20, 25, 30)~\text{bits}}$ instead of training three independent codebooks. We could then, for example, easily just use a $\textcolor{gray}{k=23}$ bit codebook for our data, even though we did not train to learn representations at this value of $\textcolor{gray}{k}$.</p>
+
+<blockquote>
+  <p>To restate this more simply, we were <code class="language-plaintext highlighter-rouge">too lazy to train multiple models</code> with different $\textcolor{gray}{k}$, so we decided to train just one that worked at all $\textcolor{gray}{k}$.</p>
+</blockquote>
+
+<center>
+<blockquote class="twitter-tweet" data-theme="dark">
+<p lang="en" dir="ltr">🤯I still cannot believe that a runaway para (pg 9) in our old paper (LLC, NeurIPS'21) lead to all the Matryoshka works🪆<br><br>At that time, I did it as I didn't have compute to train 3 models 🤣<br><br>Last couple of weeks have been surreal, thanks everyone!<br><br>LLC: <a href="https://t.co/gRL6xCOhhP" rel="external nofollow noopener noopener noreferrer" target="_blank">https://t.co/gRL6xCOhhP</a> <a href="https://t.co/6eSr3w38jQ" rel="external nofollow noopener noopener noreferrer" target="_blank">pic.twitter.com/6eSr3w38jQ</a></p>— Aditya Kusupati (@adityakusupati) <a href="https://twitter.com/adityakusupati/status/1757651126273585447?ref_src=twsrc%5Etfw" rel="external nofollow noopener noopener noreferrer" target="_blank">February 14, 2024</a>
+</blockquote> <script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</center>
+
+<h3 id="codebooks-to-embeddings">Codebooks to Embeddings</h3>
+
+<p>Recall that <a href="#how-do-we-represent-data-for-computers">we said above</a> that the representation or embedding $\textcolor{gray}{z}$ learned by our Neural Encoder $\textcolor{gray}{f}$ for our input data $\textcolor{gray}{x}$ is a sequence of $\textcolor{gray}{d}$ numbers, i.e. $\textcolor{gray}{z = f(x) \in \mathbb{R}^d}$. I now ask you the question that led to Matryoshka Representation Learning:</p>
 
 <blockquote>
   <p>What is the best choice of representation dimensionality $\textcolor{gray}{d}$ to learn a “good” representation? And is this the same value for all kinds of data? 
@@ -383,6 +415,11 @@ If your answer to this question was <code class="language-plaintext highlighter-
 
 <p>There’s one problem: machine learning models are trained with fixed representation dimensionality $\textcolor{gray}{d}$. For ResNet-50<d-cite key="he2016deep"></d-cite>, an extremely popular CNN, $\textcolor{gray}{d=2048}$. For OpenAI’s <a href="https://openai.com/blog/new-embedding-models-and-api-updates" rel="external nofollow noopener noopener noreferrer" target="_blank">latest embedding model</a> <code class="language-plaintext highlighter-rouge">text-embedding-3-large</code>, $\textcolor{gray}{d=3072}$. If we want a smaller $\textcolor{gray}{d}$, the prevalent methods were to use traditional <a href="https://en.wikipedia.org/wiki/Dimensionality_reduction" rel="external nofollow noopener noopener noreferrer" target="_blank">dimensionality reduction</a> techniques, such as <a href="https://en.wikipedia.org/wiki/Principal_component_analysis" rel="external nofollow noopener noopener noreferrer" target="_blank">Principal Component Analysis</a>. The problem with these methods is that they operate “post-hoc” after our $\textcolor{gray}{d}$-dimensional embedding as been learned by our Neural Encoder, and are thus not data-aware or learned. Is there a way to automatically learn these lower dimensional embeddings without training separate models every time?</p>
 
+<h4 id="tldr-2">tl;dr</h4>
+<blockquote>
+  <p>Can we encourage our own laziness (or lack of GPUs <img class="emoji" title=":pensive:" alt=":pensive:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f614.png" height="20" width="20">) to train many independent models and <code class="language-plaintext highlighter-rouge">just train one model instead</code>?</p>
+</blockquote>
+
 <h2 id="what-is-mrl-really-this-time">What is MRL? (Really this Time)</h2>
 <p>MRL learns these lower-dimensional embeddings baked into the original embedding, just like a series of Matryoshka Dolls! For example, the $\textcolor{red}{\text{smallest doll}~z_{1:8}}$ has representation dimensionality $\textcolor{red}{d=8}$, which sits inside a $\textcolor{orange}{\text{slightly larger doll}~z_{1:16}}$ with $\textcolor{orange}{d=16}$, which sits inside an $\textcolor{blue}{\text{even larger doll}~z_{1:32}}$, until we reach the $\textcolor{Gray}{\text{\textbf{largest doll}}~z_{1:2048}}$ with $\textcolor{gray}{d=2048}$, as seen in the figure below. Hereon, I will interchangeably use <code class="language-plaintext highlighter-rouge">dolls</code> to refer to <code class="language-plaintext highlighter-rouge">representations learned by MRL</code>.</p>
 
@@ -397,7 +434,7 @@ If your answer to this question was <code class="language-plaintext highlighter-
 \mathcal{L_\text{Matryoshka}} &amp;= \text{average}\left(\mathcal{L}(z_{1:8}) + \mathcal{L}(z_{1:16}) + ... + \mathcal{L}(z_{1:2048})\right)
 \end{align*}\]
 
-<p>This simple modification forces the model to learn dolls that are valid and useful representations of the data by themselves! This means we can freely use whichever doll fits our purpose (budget vs accuracy).</p>
+<p>This simple modification forces the model to learn dolls that are valid and useful representations of the data by themselves (otherwise that specific doll’s loss would be high!) This means we can freely use whichever doll fits our purpose (budget vs accuracy).</p>
 </details>
 
 <h2 id="how-good-is-mrl">How Good is MRL?</h2>
@@ -425,6 +462,55 @@ If your answer to this question was <code class="language-plaintext highlighter-
   <li>
 <code class="language-plaintext highlighter-rouge">Neural Encoder Architecture</code> - ResNet-50, ConvNeXt<d-cite key="liu2022convnet"></d-cite>, ViT, <a href="https://en.wikipedia.org/wiki/BERT_(language_model)" rel="external nofollow noopener noopener noreferrer" target="_blank">BERT</a>, ALIGN</li>
 </ol>
+
+<h2 id="why-does-mrl-work">Why Does MRL Work?</h2>
+<p>I’m going to be frank with you: <code class="language-plaintext highlighter-rouge">we still don't know for sure</code>, but we have a good hypothesis: MRL learns a coarse-to-fine hierarchy of nested subspaces, and efficiently packs information in all vector spaces while being explicitly trained only at logarithmic granularities ($\textcolor{gray}{d_{ImageNet}}$ and $\textcolor{gray}{d_{JFT}}$). As long as we learn a <a href="https://www.pinecone.io/learn/series/nlp/dense-vector-embeddings-nlp/" rel="external nofollow noopener noopener noreferrer" target="_blank">dense vector representation</a> $\textcolor{gray}{z}$, MRL just works! Let’s motivate this intuition with some experiments, shall we?</p>
+
+<h3 id="the-marginal-utility-of-increasing-information">The Marginal Utility of Increasing Information</h3>
+<p><a href="#codebooks-to-embeddings">Recall</a> that MRL was born from the question:</p>
+<blockquote>
+  <p>How much information do we need to represent our data well, i.e. how big does $\textcolor{gray}{d}$ need to be?</p>
+</blockquote>
+
+<p>We hypothesize that MRL’s nested loss $\textcolor{gray}{\mathcal{L_\text{Matryoshka}}}$ (see “symbols under training” <a href="#what-is-mrl-really-this-time">here</a>) enforces a <a href="https://en.wikipedia.org/wiki/Linear_subspace" rel="external nofollow noopener noopener noreferrer" target="_blank">vector subspace</a> structure - each learned representation vector $\textcolor{gray}{z\in\mathbb{R}^d}$ lies in a $\textcolor{gray}{d}$-dimensional vector space that is a subspace of larger vector space. Woah hold on, that made no sense to me. Why are you throwing math-y jargon at me? Let’s simplify this with an example:</p>
+
+<center><img src="/assets/img/blog/calvin-1d.png" alt="1-D Calvin lies in a subspace - where 2-D Calvin lives" width="700" height="500"></center>
+<p><br><br></p>
+
+<p>I’m going to use an analogy from my favorite comic book series (sorry <a href="https://twitter.com/xkcd?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" rel="external nofollow noopener noopener noreferrer" target="_blank">xkcd</a>, you’re close behind). Think of the characters of Calvin and Hobbes as vectors lying in 3D space (i.e. the vector space $\textcolor{gray}{\mathbb{R}^3}$), just like you and I are in the real 3D world (quick caveat: Bill Watterson has <code class="language-plaintext highlighter-rouge">projected</code> the world of Calvin &amp; Hobbes to 2D space to draw them in comic books, because we unfortunately don’t have 3D comic books quite yet! Or wait, are animated movies 3D comics? <img class="emoji" title=":exploding_head:" alt=":exploding_head:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f92f.png" height="20" width="20">)</p>
+
+<p>In the comic strip above, Calvin suddenly wakes up to find himself existing only in the 2D vector space $\textcolor{gray}{\mathbb{R}^2}$, while the rest of his world is still in 3D! We can see how difficult this kind of existence would be in the rest of the strip. Calvin has woken up in the 2D subspace of 3D vector subspace, as he exists in both 2D and 3D! Come to think of it, all 2D objects (like Calvin) also exist in 3D space, don’t they? This is exactly the concept of the vector subspace structure that we hypothesize MRL is enforcing: vectors embedded with MRL lie in nested subspaces - e.g. for ImageNet, vectors lie in subspaces from $\textcolor{gray}{\mathbb{R}^8}$ to $\textcolor{gray}{\mathbb{R}^{2048}}$.</p>
+
+<blockquote>
+  <p>Now how can we examine if this hypothesis has any validity? Unfortunately, we can’t visualize vector spaces in 4D or higher (if you can, please let me know). What can we do?</p>
+</blockquote>
+
+<h3 id="low-dimensional-visualizations-of-mrl-vector-spaces">Low-dimensional Visualizations of MRL Vector Spaces</h3>
+<p>Luckily for us dimensionality reduction techniques like <a href="https://en.wikipedia.org/wiki/Principal_component_analysis" rel="external nofollow noopener noopener noreferrer" target="_blank">PCA</a> and <a href="https://en.wikipedia.org/wiki/T-distributed_stochastic_neighbor_embedding" rel="external nofollow noopener noopener noreferrer" target="_blank">t-SNE</a> are the answer! Generally speaking, these techniques try to preserve relationships between vectors in high-d vector spaces (e.g. $\textcolor{gray}{\mathbb{R}^{3072}}$) in low-d subspaces that we can actually visualize (i.e. $\textcolor{gray}{\mathbb{R}^{2}}$ or $\textcolor{gray}{\mathbb{R}^{3}}$)</p>
+
+<h4 id="1-pca">1. PCA</h4>
+<p><a href="https://twitter.com/ZainHasan6" rel="external nofollow noopener noopener noreferrer" target="_blank">Zain Hasan</a> created a <a href="https://twitter.com/ZainHasan6/status/1757810956103533045?ref_src=twsrc%5Etfw%7Ctwcamp%5Etweetembed%7Ctwterm%5E1757867522144002255%7Ctwgr%5E52f9bb2d416af075cbf225e2b2a0f43fac01d777%7Ctwcon%5Es3_&amp;ref_url=http%3A%2F%2Flocalhost%3A4000%2Fblog%2F2024%2Fmrl%2F" rel="external nofollow noopener noopener noreferrer" target="_blank">simple and clean visualization</a> of MRL vectors encoded into both 2D and 3D subspaces with PCA as we increase dimensionality of the high-d vector space, which you can see below. As seen in the visualization, the structure of data is quite consistent after $\textcolor{gray}{\mathbb{R}^{512}}$ and barely changes after $\textcolor{gray}{\mathbb{R}^{2000}}$. This means that we can capture a significant portion of the structure of vectors in $\textcolor{gray}{\mathbb{R}^{512}}$, whose vectors are only 16% as large as the vectors from the largest vector space $\textcolor{gray}{\mathbb{R}^{3072}}$!</p>
+
+<center>
+<blockquote class="twitter-tweet" data-theme="dark" data-media-max-width="560">
+<p lang="en" dir="ltr">More visualizations helping me understand my own paper 🤪 amazing work <a href="https://twitter.com/ZainHasan6?ref_src=twsrc%5Etfw" rel="external nofollow noopener noopener noreferrer" target="_blank">@ZainHasan6</a> ! <br><br>When creating MRL, we thought about the marginal utility of increasing dims (e.g. what really changes if we jump from 64-d to 128-d? How much additional information do we get?)<br><br>(1/n) <a href="https://t.co/SEQeHiLWol" rel="external nofollow noopener noopener noreferrer" target="_blank">https://t.co/SEQeHiLWol</a></p>— Aniket Rege (@wregss) <a href="https://twitter.com/wregss/status/1757867522144002255?ref_src=twsrc%5Etfw" rel="external nofollow noopener noopener noreferrer" target="_blank">February 14, 2024</a>
+</blockquote> <script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</center>
+
+<p>This visualization agrees with the accuracy saturation we observed on ImageNet and JFT (see <a href="#how-good-is-mrl">How Good is MRL</a>), which were aggregate (average) numbers. This visualization indicates that there is actually a <code class="language-plaintext highlighter-rouge">geometric subspace structure</code> that backs up the diminishing returns of accuracy as we increase embedding dimensionality.</p>
+
+<h4 id="2-t-sne">2. t-SNE</h4>
+
+<p>The folks at <a href="https://home.nomic.ai/" rel="external nofollow noopener noopener noreferrer" target="_blank">Nomic AI</a> shared this <a href="https://blog.nomic.ai/posts/nomic-embed-matryoshka" rel="external nofollow noopener noopener noreferrer" target="_blank">excellent interactive visualization</a> (go play with it!) of MRL embeddings on their own Nomic dataset with a <a href="https://en.wikipedia.org/wiki/T-distributed_stochastic_neighbor_embedding" rel="external nofollow noopener noopener noreferrer" target="_blank">t-SNE</a>:</p>
+
+<center><img src="/assets/img/blog/mrl-tsne-nomic.gif" alt="A gif illustrating Adaptive Retrieval with MRL from Xenova" width="640" height="320"></center>
+<p><br><br></p>
+
+<p>As you can see, the structure of the data is fairly consistent from a low-d subspace $\textcolor{gray}{\mathbb{R}^{128}}$ to the largest vector space $\textcolor{gray}{\mathbb{R}^{768}}$, differing only by a rotation. While t-SNE clustering should be taken with a grain of salt (data clustered in t-SNE visualizations may not necessarily be clustered in high-d), this visualization provides evidence about the <em>similarity in subspace structure</em> as we reduce the subspace dimensionality $\textcolor{gray}{d: 768\to 128}$, i.e. we can capture a good amount of the structure of data with $\textcolor{gray}{d=128}$, we don’t need the largest vector space with $\textcolor{gray}{d=768}$!</p>
+
+<blockquote>
+  <p>In summary, the marginal utility of jumping to a higher-dimensional vector space quickly saturates, and MRL helps you find the sweet spot!</p>
+</blockquote>
 
 <h1 id="using-mrl">Using MRL</h1>
 
@@ -454,10 +540,33 @@ If your answer to this question was <code class="language-plaintext highlighter-
 <img src="/assets/img/blog/mrl-interpolate.png" alt="Demonstrating MRL's interpolation behavior at dimensionalities it was not trained on" width="400" height="300">
 <p> MRL model accuracies interpolate! </p>
 </center>
-
 <p><br><br></p>
 
 <p>It turns that yes, you can - <code class="language-plaintext highlighter-rouge">MRL model accuracies seamlessly interpolate at all doll sizes</code> between the fixed doll sizes it was trained for ($\textcolor{gray}{d_{ImageNet}}$ and $\textcolor{gray}{d_{JFT}}$)! You can see this in the figure from the MRL paper above, where the X-Axis is the doll size or representation size, and all the $\textcolor{red}{\text{red points}}$ are evaluations at $\textcolor{red}{\text{interpolated sizes}}$. This means we can freely, in the <a href="https://openai.com/blog/new-embedding-models-and-api-updates" rel="external nofollow noopener noopener noreferrer" target="_blank">words of OpenAI</a>, “remove some numbers from the end of the sequence” of any representation, and use that embedding directly! I’m not going to make a doll analogy for this because the thought is quite gruesome.</p>
+
+<h2 id="adaptive-retrieval">Adaptive Retrieval</h2>
+<p>A very simple yet powerful use-case that extends the simple web-scale search example above is to use MRL for retrieval <em>adaptively</em>, i.e.</p>
+<ol>
+  <li>Shortlist a large pool of 1000 cat candidates with small $\textcolor{gray}{d=32}$</li>
+  <li>Reorder/Rerank the shortlisted pool of cats with large $\textcolor{gray}{d=512}$</li>
+</ol>
+
+<p>The reason this is easy with MRL is that the embedding for shortlisting is just a chopped-off version of the embedding for re-ordering! We thus don’t need to store multiple large copies of $\textcolor{gray}{X_{Mat}}$ or query multiple search indices built on different $\textcolor{gray}{d}$ (very slow).</p>
+
+<p>If this sounds interesting, we showed a very simple and powerful Adaptive Retrieval technique called Funnel in the original paper, and wrote a whole new paper on Adaptive Representations for Approximate Nearest Neighbor Search (AdANNS<d-cite key="rege2023adanns"></d-cite>) - using MRL to add adaptivity to <code class="language-plaintext highlighter-rouge">every component of web-scale search</code>- stay tuned for more my next blog post about this!</p>
+
+<center><img src="/assets/img/blog/AR-mrl-xenova.gif" alt="A gif illustrating Adaptive Retrieval with MRL from Xenova" width="480" height="320"></center>
+<p><br><br></p>
+
+<p>There have been several excellent resources emerging on twitter walking through MRL-powered adaptive retrieval, including:</p>
+<ol>
+  <li>This <a href="https://ujjwalm29.medium.com/matryoshka-representation-learning-a-guide-to-faster-semantic-search-1c9025543530" rel="external nofollow noopener noopener noreferrer" target="_blank">excellent blog post</a> from <a href="https://twitter.com/ujjwalm29" rel="external nofollow noopener noopener noreferrer" target="_blank">Ujjwal Maheshwari</a> walks through the methodology and code of MRL-style Adaptive Retrieval.</li>
+  <li>
+<a href="https://twitter.com/xenovacom/status/1757798436009599413" rel="external nofollow noopener noopener noreferrer" target="_blank">A cool demo</a> from <a href="https://twitter.com/xenovacom" rel="external nofollow noopener noopener noreferrer" target="_blank">Xenova</a> showing that the highest dimensionality (e.g. $\textcolor{gray}{d=768}$ for BERT-Base) is not required to embed data - have a look at what happens in the gif above if you drop from $\textcolor{gray}{d=768}$ all the way down to $\textcolor{gray}{d=64}$ with MRL <img class="emoji" title=":nesting_dolls:" alt=":nesting_dolls:" src="https://github.githubassets.com/images/icons/emoji/unicode/1fa86.png" height="20" width="20">
+</li>
+  <li>
+<a href="https://twitter.com/ggrdson" rel="external nofollow noopener noopener noreferrer" target="_blank">Greg Richardson</a>, <a href="https://twitter.com/egor_test" rel="external nofollow noopener noopener noreferrer" target="_blank">Egor Romanov</a> and <a href="https://twitter.com/kiwicopple" rel="external nofollow noopener noopener noreferrer" target="_blank">Paul Cooplestone</a> of <a href="https://twitter.com/Supabase" rel="external nofollow noopener noopener noreferrer" target="_blank">Supabase</a> wrote a <a href="https://supabase.com/blog/matryoshka-embeddings" rel="external nofollow noopener noopener noreferrer" target="_blank">comprehensive blog</a> on Adaptive Retrieval with the new OpenAI embedding models, with some interesting insights into approximate search with HNSW<d-cite key="malkov2018efficient"></d-cite> as well - this is a sneak peak into our follow-up work to MRL - AdANNS<d-cite key="rege2023adanns"></d-cite>.</li>
+</ol>
 
 <h2 id="so-what-is-the-catch">So What is the Catch?</h2>
 <p>None! Please go train MRL models on huge datasets with huge transformers and open source your work!</p>
@@ -473,6 +582,9 @@ If your answer to this question was <code class="language-plaintext highlighter-
 </li>
   <li>BERT-Base models finetuned on Natural Questions: <a href="https://huggingface.co/aniketr/mrl-nq" rel="external nofollow noopener noopener noreferrer" target="_blank">huggingface.co/aniketr/mrl-nq</a>
 </li>
+  <li>
+<a href="https://home.nomic.ai/" rel="external nofollow noopener noopener noreferrer" target="_blank">Nomic AI</a>’s long-context BERT model by: <a href="https://huggingface.co/nomic-ai/nomic-embed-text-v1.5" rel="external nofollow noopener noopener noreferrer" target="_blank">huggingface.co/nomic-ai/nomic-embed-text-v1.5</a>
+</li>
 </ol>
 
 <h2 id="thoughts-get-in-touch">Thoughts? Get in Touch!</h2>
@@ -485,7 +597,7 @@ If your answer to this question was <code class="language-plaintext highlighter-
 <p>Please get in touch with me via <code class="language-plaintext highlighter-rouge">aniketr@cs.wisc.edu</code> or join the discussion on my Twitter:</p>
 
 <center>
-<blockquote class="twitter-tweet">
+<blockquote class="twitter-tweet" data-theme="dark">
 <p lang="en" dir="ltr">With all the recent hype around 🪆Matryoshka Representation Learning 🪆(Thanks <a href="https://twitter.com/OpenAI?ref_src=twsrc%5Etfw" rel="external nofollow noopener noopener noreferrer" target="_blank">@OpenAI</a> !), I finally put my longstanding plan of writing a detailed blog about MRL to action<a href="https://t.co/guGZRSxxDo" rel="external nofollow noopener noopener noreferrer" target="_blank">https://t.co/guGZRSxxDo</a><br><br>This blog is NOT a paper walkthrough (see <a href="https://twitter.com/RitvikRastogi19?ref_src=twsrc%5Etfw" rel="external nofollow noopener noopener noreferrer" target="_blank">@RitvikRastogi19</a> for that!)<br><br>(1/7)</p>— Aniket Rege (@wregss) <a href="https://twitter.com/wregss/status/1755266172868571597?ref_src=twsrc%5Etfw" rel="external nofollow noopener noopener noreferrer" target="_blank">February 7, 2024</a>
 </blockquote> <script async="" src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 </center>
@@ -500,6 +612,7 @@ If your answer to this question was <code class="language-plaintext highlighter-
 <a href="https://arxiv.org/abs/2310.07707" rel="external nofollow noopener noopener noreferrer" target="_blank">MatFormer: Nested Transformer for Elastic Inference</a> - using MRL in the weight space of a Transformer to extract hundreds of smaller transformers after a single training pass.</li>
   <li>
 <a href="https://www.pinecone.io/learn/series/faiss/" rel="external nofollow noopener noopener noreferrer" target="_blank">Pinecone blogs on Vector Search Components</a> - a series of excellent blog posts by <a href="https://twitter.com/jamescalam" rel="external nofollow noopener noopener noreferrer" target="_blank">James Briggs</a> on the various components of vector search at scale, including search space pruning and vector quantization techniques.</li>
+  <li>Excellent blog posts from <a href="https://blog.nomic.ai/posts/nomic-embed-matryoshka" rel="external nofollow noopener noopener noreferrer" target="_blank">Nomic AI</a> on their high quality open-source MRL embedding model, <a href="https://twitter.com/andreer" rel="external nofollow noopener noopener noreferrer" target="_blank">Andreas Eriksen</a> at <a href="https://blog.vespa.ai/matryoshka-embeddings-in-vespa/" rel="external nofollow noopener noopener noreferrer" target="_blank">Vespa AI</a> on easily using OpenAI’s MRL embeddings with Vespa.</li>
 </ol>
 
 <h2 id="acknowledgements">Acknowledgements</h2>

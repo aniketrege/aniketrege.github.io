@@ -1,51 +1,62 @@
-"Kusupati":
-  - firstname: ["Aditya", "A."]
-    url: https://homes.cs.washington.edu/~kusupati/
-
 "Bhatt":
   - firstname: ["Gantavya", "G."]
     url: https://sites.google.com/view/gbhatt/
 
-"Wallingford":
-  - firstname: ["Matthew", "M."]
-    url: https://mattwallingford.github.io/
+"Cao":
+  - firstname: ["Qingqing", "Q."]
+    url: https://awk.ai/
 
-"Ramanujan": 
-  - firstname: ["Vivek", "V."]
-    url: https://vkramanuj.github.io/
-
-"Kakade":
-  - firstname: ["Sham", "S."]
-    url: https://sham.seas.harvard.edu/
-
-"Jain":
-  - firstname: ["Prateek", "P."]
-    url: http://www.prateekjain.org/
-
-"Farhadi":
-  - firstname: ["Ali", "A."]
-    url: https://homes.cs.washington.edu/~ali/
-
-"Kulkarni":
-  - firstname: ["Muralidhar", "M."]
-    url: https://ece.nitk.ac.in/faculty/muralidhar-kulkarni
-  
-"Sinha":
-  - firstname: ["Aditya", "A."]
-    url: https://adityaasinha28.github.io/
-
-"Howard-Snyder":
-  - firstname: ["William", "W."]
-    url: https://williamhowardsnyder.github.io/
+"Chen":
+  - firstname: ["Yi", "Y."]
+    url: https://www.deepneural.network/
+    
+  - firstname: ["Daiwei", "D."]
+    url: https://chendaiwei-99.github.io/
 
 "Fan":
   - firstname: ["Alan", "A."]
     url: https://www.linkedin.com/in/alan-fan/
 
+"Farhadi":
+  - firstname: ["Ali", "A."]
+    url: https://homes.cs.washington.edu/~ali/
+
+"Howard-Snyder":
+  - firstname: ["William", "W."]
+    url: https://williamhowardsnyder.github.io/
+
+"Jain":
+  - firstname: ["Prateek", "P."]
+    url: http://www.prateekjain.org/
+
+"Kakade":
+  - firstname: ["Sham", "S."]
+    url: https://sham.seas.harvard.edu/
+
+"Korlakai Vinayak":
+  - firstname: ["Ramya", "R."]
+    url: https://ramyakv.github.io/
+
+"Kulkarni":
+  - firstname: ["Muralidhar", "M."]
+    url: https://ece.nitk.ac.in/faculty/muralidhar-kulkarni
+
+"Kusupati":
+  - firstname: ["Aditya", "A."]
+    url: https://homes.cs.washington.edu/~kusupati/
+
+"Ramanujan": 
+  - firstname: ["Vivek", "V."]
+    url: https://vkramanuj.github.io/
+
 "Ranjit S":
   - firstname: ["Sharan", "S."]
     url: https://www.linkedin.com/in/sharan-ranjit/
 
-"Cao":
-  - firstname: ["Qingqing", "Q."]
-    url: https://awk.ai/
+"Sinha":
+  - firstname: ["Aditya", "A."]
+    url: https://adityaasinha28.github.io/
+    
+"Wallingford":
+  - firstname: ["Matthew", "M."]
+    url: https://mattwallingford.github.io/

@@ -6,7 +6,7 @@ subtitle: Hello There!
 
 profile:
   align: right
-  image: prof_pic.jpg
+  image: prof_pic.png
   image_circular: false # crops the image to make it circular
   address: >
     <!--<a href="https://raivn.cs.washington.edu/">RAIVN Lab</a>-->
@@ -18,7 +18,7 @@ selected_papers: true # includes a list of papers marked as "selected={true}"
 social: false  # includes social icons at the bottom of the page
 ---
 
-I'm a Ph.D student in Computer Sciences at the University of Wisconsin-Madison, advised by [Prof. Ramya Vinayak](https://ramyakv.github.io/) working on human preference learning and generative models. 
+I'm a Ph.D student in Computer Sciences at the University of Wisconsin-Madison, advised by [Prof. Ramya Vinayak](https://ramyakv.github.io/) working on preference learning and generative models. 
 
 Previously, I was an masters student at the University of Washington, Seattle where I worked with the RAIVN Lab advised by [Prof. Ali Farhadi](https://homes.cs.washington.edu/~ali/) and mentored by [Aditya Kusupati](https://homes.cs.washington.edu/~kusupati/). My MS research focused on large-scale efficient and deployable machine learning, visual representation learning, and web-scale search.
 

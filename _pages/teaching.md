@@ -11,6 +11,7 @@ nav_order: 5
 
 ##### *"[Introduction to Artificial Intelligence](https://pages.cs.wisc.edu/~jerryzhu/cs540f23/index.html)"* (CS 540)
 - Prof. Jerry Zhu, Fall '23
+- Prof. Yudong Chen, Fall '24
 
 ---
 ### University of Washington

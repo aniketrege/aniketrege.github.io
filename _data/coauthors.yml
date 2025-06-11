@@ -64,3 +64,22 @@
 "Wang":
   - firstname: ["Zhi", "Z."]
     url: https://zwang.org/
+
+"Lee":
+  - firstname: ["Yong Jae", "Y.J."]
+    url: https://pages.cs.wisc.edu/~yongjaelee/
+
+"Nie":
+  - firstname: ["Zinnia", "Z."]
+    url: https://www.linkedin.com/in/zinnia-nie-468850224/
+
+"Ramesh":
+  - firstname: ["Mahesh", "M."]
+    url: https://www.linkedin.com/in/mahesh-r-21a4981a4/
+
+"Raskar":
+  - firstname: ["Unmesh", "U."]
+    url: https://www.linkedin.com/in/unmesh-raskar/
+"Yu":
+  - firstname: ["Zhuoran", "Z."]
+    url: https://www.zhuoranyu.com/

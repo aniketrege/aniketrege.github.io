@@ -30,6 +30,11 @@
 - title: Experience
   type: time_table
   contents:
+    - title: Research Scientist Intern
+      institution: Meta Redmond
+      year: 2025
+      description:
+        - Working on long video retrieval and multimodal contextual AI
     - title: Applied Research Intern
       institution: NVIDIA Redmond
       year: 2022

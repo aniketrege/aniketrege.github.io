@@ -31,12 +31,14 @@
   type: time_table
   contents:
     - title: Research Scientist Intern
-      institution: Meta Redmond
+      institution: Meta, Redmond
       year: 2025
       description:
-        - Working on long video retrieval and multimodal contextual AI
+        - Addressing very long video video understanding (~1 week +) with an agentic approach, EGAgent
+        - Key contribution - modeling inter-entity relationships with a temporally annotated entity-scene graph
+        - State-of-the-art results on EgoLife and competitive on Video-MME (Long)
     - title: Applied Research Intern
-      institution: NVIDIA Redmond
+      institution: NVIDIA, Redmond
       year: 2022
       description:
         - Improved performance of MultiView LidarNet on pedestrians, a critical safety and reliability issue for autonomous vehicles
@@ -44,8 +46,8 @@
         - To model long-range dependencies in representation subspace of Lidar point cloud, added naive multi-head attention at deeper layers, as well as ViT-style patched multi-head attention at shallower layers
         - Creation of attention-augmented CNN improved overall pedestrian performance (+8% recall, +7.5% precision) at only +1.5 ms inference cost while also improving car performance
     - title: Research Engineer
-      institution: Samsung Research
-      year: 2018-2021
+      institution: Samsung Research, Bangalore
+      year: 2018 - 2021
       description:
         - Founding member in the team that developed and shipped Single Take Camera, the USP of the Galaxy S20 smartphone, which included an ML classification model for portrait mode effects and overall system logic
         - Published two papers on structured video representations for motion understanding (ICCV W '21) and intelligent facial texture smoothing (CVPR W '20)

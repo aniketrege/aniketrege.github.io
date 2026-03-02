@@ -33,6 +33,10 @@
   - firstname: ["Sham", "S."]
     url: https://sham.seas.harvard.edu/
 
+"Kim":
+  - firstname: ["Hyo Jin", "H.J."]
+    url: https://www.cs.unc.edu/~hyojin/
+
 "Korlakai Vinayak":
   - firstname: ["Ramya", "R."]
     url: https://ramyakv.github.io/
@@ -45,6 +49,10 @@
   - firstname: ["Aditya", "A."]
     url: https://homes.cs.washington.edu/~kusupati/
 
+"Parihar":
+  - firstname: ["Rishubh", "R."]
+    url: https://rishubhpar.github.io/
+
 "Ramanujan": 
   - firstname: ["Vivek", "V."]
     url: https://vkramanuj.github.io/
@@ -52,6 +60,10 @@
 "Ranjit S":
   - firstname: ["Sharan", "S."]
     url: https://www.linkedin.com/in/sharan-ranjit/
+
+"Sadhu":
+  - firstname: ["Arka", "A."]
+    url: https://theshadow29.github.io/
 
 "Sinha":
   - firstname: ["Aditya", "A."]
@@ -69,6 +81,12 @@
   - firstname: ["Yong Jae", "Y.J."]
     url: https://pages.cs.wisc.edu/~yongjaelee/
 
+"Li":
+  - firstname: ["Yuliang", "Y."]
+    url: https://oi02lyl.github.io/
+  - firstname: ["Kejie", "K."]
+    url: https://likojack.github.io/kejieli/#/home
+
 "Nie":
   - firstname: ["Zinnia", "Z."]
     url: https://www.linkedin.com/in/zinnia-nie-468850224/
@@ -77,9 +95,6 @@
   - firstname: ["Mahesh", "M."]
     url: https://www.linkedin.com/in/mahesh-r-21a4981a4/
 
-"Raskar":
-  - firstname: ["Unmesh", "U."]
-    url: https://www.linkedin.com/in/unmesh-raskar/
 "Yu":
   - firstname: ["Zhuoran", "Z."]
     url: https://www.zhuoranyu.com/

@@ -6,6 +6,10 @@
   - firstname: ["Qingqing", "Q."]
     url: https://awk.ai/
 
+"Chai":
+  - firstname: ["Yuning", "Y."]
+    url: https://scholar.google.com/citations?user=i7U4YogAAAAJ&hl=en
+
 "Chen":
   - firstname: ["Yi", "Y."]
     url: https://www.deepneural.network/
@@ -94,6 +98,14 @@
 "Ramesh":
   - firstname: ["Mahesh", "M."]
     url: https://www.linkedin.com/in/mahesh-r-21a4981a4/
+
+"Velusamy":
+  - firstname: ["Sudha", "S."]
+    url: https://www.linkedin.com/in/sudha-velusamy-774a496/
+
+"Vlatakis":
+  - firstname: ["Manolis", "M."]
+    url: https://pages.cs.wisc.edu/~vlatakis/
 
 "Yu":
   - firstname: ["Zhuoran", "Z."]

@@ -13,6 +13,7 @@ nav_order: 5
 - Prof. Jerry Zhu, Fall '23
 - Prof. Yudong Chen, Fall '24
 - Prof. Sharon Li, Spring '25
+- Prof. Gavin Brown, Fall '25 (Head TA)
 
 ---
 ### University of Washington

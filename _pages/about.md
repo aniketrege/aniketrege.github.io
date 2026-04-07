@@ -18,7 +18,7 @@ selected_papers: true # includes a list of papers marked as "selected={true}"
 social: false  # includes social icons at the bottom of the page
 ---
 
-I'm a Ph.D student in Computer Sciences at the University of Wisconsin-Madison, where I spend most of time thinking about **heterogeneous preference learning** and **demographically diverse multimodal generative models**. I am fortunate to be jointly advised by [Ramya Vinayak](https://ramyakv.github.io/) and [Yong Jae Lee](https://pages.cs.wisc.edu/~yongjaelee/).
+I'm a Ph.D student in Computer Sciences at the University of Wisconsin-Madison, where I spend most of time thinking about **heterogeneous and diverse preference learning** for generative models and **multimodal retrieval for long-horizon agentic reasoning**. I am fortunate to be jointly advised by [Ramya Vinayak](https://ramyakv.github.io/) and [Yong Jae Lee](https://pages.cs.wisc.edu/~yongjaelee/).
 
 Previously, I was an masters student at the University of Washington, Seattle where I worked with the RAIVN Lab advised by [Prof. Ali Farhadi](https://homes.cs.washington.edu/~ali/) and mentored by [Aditya Kusupati](https://homes.cs.washington.edu/~kusupati/). My MS research focused on large-scale efficient and deployable machine learning (Matryoshka), visual representation learning, and web-scale search. I was research scientist intern from May - Dec '25 at [Meta Reality Labs](https://about.meta.com/realitylabs/), working on long horizon reasoning for video understanding under [Hyo Jin Kim](https://www.cs.unc.edu/~hyojin/) and [Yuning Chai](https://www.linkedin.com/in/chaiyuning/).
 

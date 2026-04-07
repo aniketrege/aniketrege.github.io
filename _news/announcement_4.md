@@ -1,7 +1,7 @@
 ---
 layout: post
-date: 2022-05-17 07:59:00-0400
+date: 2026-04-06 07:59:00-0400
 inline: true
 ---
 
-Our work on texture-aware wavelet-based facial blemish removal is published as a [US Patent](https://patents.google.com/patent/US11335122B2/en).
+[EGAgent](https://facebookresearch.github.io/egagent/) from my internship at [Meta Reality Labs](https://about.meta.com/realitylabs/) is accepted at ACL '26 Main Conference! See you in San Diego ☀️

@@ -7,7 +7,8 @@ years: [2026, 2025, 2023, 2022, 2021, 2020, 2018]
 nav: true
 nav_order: 1
 ---
-<div style="text-align: right"> <small>*equal contribution</small> </div>
+<div style="text-align: right"> <small>* equal contribution</small> </div>
+<div style="text-align: right"> <small>† equal advising</small> </div>
 <!-- _pages/publications.md -->
 <div class="publications">
 

@@ -30,6 +30,11 @@
 - title: Experience
   type: time_table
   contents:
+    - title: Student Researcher
+      institution: Google DeepMind, Bangalore
+      year: 2026
+      description:
+        - Working on evals and LLM post training for long horizon agentic tool use.
     - title: Research Scientist Intern
       institution: Meta, Redmond
       year: 2025

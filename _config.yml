@@ -70,8 +70,8 @@ gitlab_username: # your GitLab user name
 twitter_username: wregss
 linkedin_username: aniket-rege
 scholar_userid: qdsfqI4AAAAJ
-semanticscholar_id: # your Semantic Scholar ID
-orcid_id: # 0000-0003-1621-7098
+semanticscholar_id: 51893810
+orcid_id: 0000-0003-1621-7098
 medium_username: # your Medium username
 quora_username: # your Quora username
 publons_id: # your ID on Publons
@@ -265,7 +265,7 @@ scholar:
   query: "@*"
 
 # Filter out certain bibtex entry keywords used internally from the bib output
-filtered_bibtex_keywords: [abbr, abstract, additional_info, arxiv, bibtex_show, html, pdf, selected, supp, blog, code, poster, slides, website, preview]
+filtered_bibtex_keywords: [abbr, abstract, additional_info, arxiv, bibtex_show, html, pdf, selected, supp, blog, code, poster, slides, talk, website, preview, dimensions]
 
 # Maximum number of authors to be shown for each publication (more authors are visible on click)
 max_author_limit:   # leave blank to always show all authors
@@ -319,6 +319,11 @@ enable_navbar_social:       true  # enables displaying social links in the
 enable_project_categories:  true   # enables categorization of projects into
                                    # multiple categories
 enable_medium_zoom:         true   # enables image zoom feature (as on medium.com)
+
+# Badges (Dimensions, Altmetric)
+badges:
+  altmetric_badge: false
+  dimensions_badge: false
 
 
 # -----------------------------------------------------------------------------

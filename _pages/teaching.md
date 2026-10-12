@@ -15,6 +15,9 @@ nav_order: 5
 - Prof. Sharon Li, Spring '25
 - Prof. Gavin Brown, Fall '25 (Head TA)
 
+##### *"[Introduction to Computer Vision](https://pages.cs.wisc.edu/~mohitg/courses/CS566/)"* (CS 540)
+- Prof. Mohit Gupta, Fall '26
+
 ---
 ### University of Washington
 

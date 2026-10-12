@@ -184,12 +184,45 @@
             <a href="{{ entry.slides | prepend: '/assets/pdf/' | relative_url }}" class="btn btn-sm z-depth-0" role="button">Slides</a>
             {%- endif %}
           {%- endif %}
+          {%- if entry.talk %}
+            <a href="{{ entry.talk }}" class="btn btn-sm z-depth-0" role="button">Talk</a>
+          {%- endif %}
           {%- if entry.website %}
             <a href="{{ entry.website }}" class="btn btn-sm z-depth-0" role="button">Website</a>
           {%- endif %}
           </div>
-          {% if site.badges %}
+
+          {%- assign has_scholar_badge = false -%}
+          {%- if site.data.citations and site.data.citations.papers[entry.key] > 0 -%}
+            {%- assign has_scholar_badge = true -%}
+          {%- endif -%}
+
+          {% if site.badges or has_scholar_badge %}
           <div class="badges">
+            {%- if has_scholar_badge %}
+              {%- assign citation_count = site.data.citations.papers[entry.key] -%}
+              {%- assign scholar_cid = site.data.citations.scholar_ids[entry.key] | default: entry.google_scholar_id -%}
+              {%- if scholar_cid and site.scholar_userid -%}
+                {%- assign scholar_link = "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=" | append: site.scholar_userid | append: "&citation_for_view=" | append: site.scholar_userid | append: ":" | append: scholar_cid -%}
+              {%- elsif site.scholar_userid -%}
+                {%- assign scholar_link = "https://scholar.google.com/citations?user=" | append: site.scholar_userid | append: "&hl=en" -%}
+              {%- else -%}
+                {%- assign scholar_link = nil -%}
+              {%- endif -%}
+              <span class="badge-scholar" style="margin-bottom: 6px; display: inline-block;">
+                {%- if scholar_link -%}
+                <a href="{{ scholar_link }}" target="_blank" rel="noopener noreferrer">
+                {%- endif -%}
+                  <span class="badge badge-pill badge-pill-scholar font-weight-normal">
+                    <i class="ai ai-google-scholar mr-1" style="vertical-align: middle;"></i>
+                    <span style="font-weight: 500;">Citations</span>
+                    <span class="citation-count">{{ citation_count }}</span>
+                  </span>
+                {%- if scholar_link -%}
+                </a>
+                {%- endif -%}
+              </span>
+            {%- endif %}
             {%- if site.badges.altmetric_badge %}
             <span class="altmetric-embed" data-hide-no-mentions="true" data-hide-less-than="15" data-badge-type="2" data-badge-popover="right"
               {% if entry.eprint %}
@@ -209,10 +242,12 @@
               <span class="__dimensions_badge_embed__"
               {% if entry.doi %}
                 data-doi="{{ entry.doi }}"
-              {% else if entry.pmid %}
+              {% elsif entry.pmid %}
                 data-pmid="{{ entry.pmid }}"
-              {% else %}
+              {% elsif entry.dimensions %}
                 data-id="{{ entry.dimensions }}"
+              {% elsif entry.arxiv %}
+                data-doi="10.48550/arXiv.{{ entry.arxiv }}"
               {% endif %}
               data-hide-zero-citations="true" data-style="small_rectangle" data-legend="hover-right" style="margin-bottom: 6px;"></span>
             {%- endif %}

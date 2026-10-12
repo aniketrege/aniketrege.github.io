@@ -644,15 +644,51 @@ footer.sticky-bottom {
       }
 
       .badges {
+        padding-bottom: 0.5rem;
         span {
           display: inline-block;
-          color: $black-color;
-          height: 100%;
-          padding-left: 0.5rem;
+          color: var(--global-text-color);
           vertical-align: middle;
 
           &:hover {
             text-decoration: underline;
+          }
+        }
+
+        .badge-scholar {
+          padding-left: 0;
+
+          a {
+            text-decoration: none !important;
+
+            &:hover .badge-pill-scholar {
+              border-color: var(--global-theme-color) !important;
+              color: var(--global-theme-color) !important;
+            }
+          }
+
+          .badge-pill-scholar {
+            border: 1px solid var(--global-text-color) !important;
+            background: transparent !important;
+            color: var(--global-text-color) !important;
+            padding: 4px 10px;
+            font-size: 0.78rem;
+            vertical-align: middle;
+
+            i {
+              color: inherit !important;
+            }
+
+            .citation-count {
+              display: inline-block;
+              margin-left: 4px;
+              padding: 1px 6px;
+              border-radius: 10rem;
+              font-size: 0.75rem;
+              font-weight: 600;
+              background-color: rgba(128, 128, 128, 0.25);
+              color: var(--global-text-color) !important;
+            }
           }
         }
       }

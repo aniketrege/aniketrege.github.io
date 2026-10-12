@@ -595,15 +595,47 @@ footer.sticky-bottom {
   color: var(--global-theme-color);
   border-color: var(--global-theme-color);
 }
+.publications ol.bibliography li .badges {
+  padding-bottom: 0.5rem;
+}
 .publications ol.bibliography li .badges span {
   display: inline-block;
-  color: #000000;
-  height: 100%;
-  padding-left: 0.5rem;
+  color: var(--global-text-color);
   vertical-align: middle;
 }
 .publications ol.bibliography li .badges span:hover {
   text-decoration: underline;
+}
+.publications ol.bibliography li .badges .badge-scholar {
+  padding-left: 0;
+}
+.publications ol.bibliography li .badges .badge-scholar a {
+  text-decoration: none !important;
+}
+.publications ol.bibliography li .badges .badge-scholar a:hover .badge-pill-scholar {
+  border-color: var(--global-theme-color) !important;
+  color: var(--global-theme-color) !important;
+}
+.publications ol.bibliography li .badges .badge-scholar .badge-pill-scholar {
+  border: 1px solid var(--global-text-color) !important;
+  background: transparent !important;
+  color: var(--global-text-color) !important;
+  padding: 4px 10px;
+  font-size: 0.78rem;
+  vertical-align: middle;
+}
+.publications ol.bibliography li .badges .badge-scholar .badge-pill-scholar i {
+  color: inherit !important;
+}
+.publications ol.bibliography li .badges .badge-scholar .badge-pill-scholar .citation-count {
+  display: inline-block;
+  margin-left: 4px;
+  padding: 1px 6px;
+  border-radius: 10rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background-color: rgba(128, 128, 128, 0.25);
+  color: var(--global-text-color) !important;
 }
 .publications ol.bibliography li .hidden {
   font-size: 0.875rem;

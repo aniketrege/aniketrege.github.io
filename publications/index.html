@@ -5,16 +5,62 @@
   <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">    <!-- Metadata, OpenGraph and Schema.org -->
     
+    <!-- Website verification -->
+    <meta name="google-site-verification" content="3GJjsEYVLlz_L5zc4eB_Gr_0f1eq_J-HHiHVxRddF3c">
+<!-- Avoid warning on Google Chrome
+        Error with Permissions-Policy header: Origin trial controlled feature not enabled: 'interest-cohort'.
+        see https://stackoverflow.com/a/75119417
+    -->
+    <meta http-equiv="Permissions-Policy" content="interest-cohort=()">
 
     <!-- Standard metadata -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>publications | Aniket  Rege</title>
-    <meta name="author" content="Aniket  Rege">
-    <meta name="description" content="A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
-">
-    <meta name="keywords" content="jekyll, jekyll-theme, academic-website, portfolio-website">
+<title>publications | Aniket Rege</title>
+    <meta name="author" content="Aniket Rege">
+    <meta name="description" content="Publications by Aniket Rege (UW-Madison) on LLM agents, RL post-training, long video understanding, pluralistic alignment, and Matryoshka representation learning, at ACL, ICML, ICCV, ICLR, and NeurIPS.">
+    <meta name="keywords" content="Aniket Rege, UW-Madison, PhD, machine learning, LLM agents, agentic reasoning, reinforcement learning, RL post-training, multimodal, video understanding, pluralistic alignment, preference learning, Matryoshka Representation Learning, embeddings, information retrieval, research internship">
+
+    <!-- OpenGraph -->
+    <meta property="og:site_name" content="Aniket Rege">
+    <meta property="og:type" content="profile">
+    <meta property="og:title" content="publications | Aniket Rege">
+    <meta property="og:url" content="https://aniketrege.github.io/publications/">
+    <meta property="og:description" content="Publications by Aniket Rege (UW-Madison) on LLM agents, RL post-training, long video understanding, pluralistic alignment, and Matryoshka representation learning, at ACL, ICML, ICCV, ICLR, and NeurIPS.">
+    <meta property="og:image" content="https://aniketrege.github.io/assets/img/prof_pic.png">
+    <meta property="og:image:alt" content="Aniket Rege">
+    <meta property="og:locale" content="en">
+
+    <!-- Twitter card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="publications | Aniket Rege">
+    <meta name="twitter:description" content="Publications by Aniket Rege (UW-Madison) on LLM agents, RL post-training, long video understanding, pluralistic alignment, and Matryoshka representation learning, at ACL, ICML, ICCV, ICLR, and NeurIPS.">
+    <meta name="twitter:image" content="https://aniketrege.github.io/assets/img/prof_pic.png">
+    <meta name="twitter:site" content="@wregss">
+    <meta name="twitter:creator" content="@wregss">
+
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "url": "https://aniketrege.github.io/publications/",
+        "name": "publications | Aniket Rege",
+        "description": "Publications by Aniket Rege (UW-Madison) on LLM agents, RL post-training, long video understanding, pluralistic alignment, and Matryoshka representation learning, at ACL, ICML, ICCV, ICLR, and NeurIPS.",
+        "mainEntity": {
+          "@type": "Person",
+          "name": "Aniket Rege",
+          "url": "https://aniketrege.github.io/",
+          "image": "https://aniketrege.github.io/assets/img/prof_pic.png",
+          "jobTitle": "PhD Student",
+          "affiliation": { "@type": "CollegeOrUniversity", "name": "University of Wisconsin-Madison" },
+          "alumniOf": [{ "@type": "CollegeOrUniversity", "name": "University of Washington" }, { "@type": "CollegeOrUniversity", "name": "National Institute of Technology Karnataka" }],
+          "knowsAbout": ["LLM agents","Reinforcement learning","Multimodal reasoning","Video understanding","Pluralistic alignment","Representation learning","Information retrieval"],
+          "sameAs": ["https://scholar.google.com/citations?user=qdsfqI4AAAAJ","https://github.com/aniketrege","https://www.linkedin.com/in/aniket-rege","https://twitter.com/wregss","https://orcid.org/0000-0003-1621-7098","https://www.semanticscholar.org/author/51893810"]
+        }
+      }
+    </script>
 
 
     <!-- Bootstrap & MDB -->
@@ -127,13 +173,13 @@
 <!-- _layouts/bib.html -->
       <div class="row">
         <div class="col-sm-2 preview">
-<abbr class="badge rounded w-100" style="background-color:#4F7942">COLM</abbr><figure>
+<abbr class="badge rounded w-100" style="background-color:#4F7942">COLM W</abbr><figure>
 
   <picture>
     
 
     <!-- Fallback to the original file -->
-    <img src="/assets/img/publication_preview/fire_avatar.gif" class="preview z-depth-1 rounded" width="auto" height="auto" alt="fire_avatar.gif" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+    <img src="/assets/img/publication_preview/fire_avatar.gif" class="preview z-depth-1 rounded" width="auto" height="auto" alt="Playing with Fire: What Transfers When RL Trains a Language Agent?" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
 
   </picture>
 
@@ -155,18 +201,18 @@
         
         
         <div class="periodical">
-          <em>In COLM 2026 Workshop on Efficient Reasoning (🚨 Spotlight)</em>, 2026
+          <em>In COLM 2026 Workshop on Efficient Reasoning</em>, 2026
         </div>
         <div class="periodical">
           
         </div>
 
-        <div class="additional_info"></div>
+        <div class="additional_info">🚨 Spotlight</div>
 
           <!-- Links/Buttons -->
           <div class="links">
             <a class="bibtex btn btn-sm z-depth-0" role="button">Bib</a>
-            <a href="https://openreview.net/forum?id=BX1GWDac95" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener noopener noreferrer" target="_blank">Blog</a>
+            <a href="https://openreview.net/pdf?id=BX1GWDac95" class="btn btn-sm z-depth-0" role="button" rel="external nofollow noopener noopener noreferrer" target="_blank">PDF</a>
           </div>
           <div class="badges">
           </div>
@@ -176,7 +222,7 @@
             <figure class="highlight"><pre><code class="language-bibtex" data-lang="bibtex"><span class="nc">@inproceedings</span><span class="p">{</span><span class="nl">ramesh2026playing</span><span class="p">,</span>
   <span class="na">title</span> <span class="p">=</span> <span class="s">{Playing with Fire: What Transfers When {RL} Trains a Language Agent?}</span><span class="p">,</span>
   <span class="na">author</span> <span class="p">=</span> <span class="s">{Ramesh, Mahesh and Jayakumar, Kaousheik and Ram, Hemanth and Thodima, Pavan and Duraiswami, Ramani and Manocha, Dinesh and Rege†, Aniket and Vlatakis†, Manolis}</span><span class="p">,</span>
-  <span class="na">booktitle</span> <span class="p">=</span> <span class="s">{COLM 2026 Workshop on Efficient Reasoning (🚨 Spotlight)}</span><span class="p">,</span>
+  <span class="na">booktitle</span> <span class="p">=</span> <span class="s">{COLM 2026 Workshop on Efficient Reasoning}</span><span class="p">,</span>
   <span class="na">year</span> <span class="p">=</span> <span class="s">{2026}</span><span class="p">,</span>
 <span class="p">}</span></code></pre></figure>
           </div>
@@ -193,7 +239,7 @@
     
 
     <!-- Fallback to the original file -->
-    <img src="/assets/img/publication_preview/hanabi.gif" class="preview z-depth-1 rounded" width="auto" height="auto" alt="hanabi.gif" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+    <img src="/assets/img/publication_preview/hanabi.gif" class="preview z-depth-1 rounded" width="auto" height="auto" alt="Sparks of Cooperative Reasoning: LLMs as Strategic Hanabi Agents" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
 
   </picture>
 
@@ -260,7 +306,7 @@
     
 
     <!-- Fallback to the original file -->
-    <img src="/assets/img/publication_preview/egagent.gif" class="preview z-depth-1 rounded" width="auto" height="auto" alt="egagent.gif" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+    <img src="/assets/img/publication_preview/egagent.gif" class="preview z-depth-1 rounded" width="auto" height="auto" alt="Agentic Very Long Video Understanding" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
 
   </picture>
 
@@ -331,7 +377,7 @@
     
 
     <!-- Fallback to the original file -->
-    <img src="/assets/img/publication_preview/cure.gif" class="preview z-depth-1 rounded" width="auto" height="auto" alt="cure.gif" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+    <img src="/assets/img/publication_preview/cure.webp" class="preview z-depth-1 rounded" width="auto" height="auto" alt="CuRe: Cultural Gaps in the Long Tail of Text-to-Image Systems" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
 
   </picture>
 
@@ -398,7 +444,7 @@
     
 
     <!-- Fallback to the original file -->
-    <img src="/assets/img/publication_preview/preference.gif" class="preview z-depth-1 rounded" width="auto" height="auto" alt="preference.gif" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+    <img src="/assets/img/publication_preview/preference.webp" class="preview z-depth-1 rounded" width="auto" height="auto" alt="PAL: Sample-Efficient Personalized Reward Modeling for Pluralistic Alignment" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
 
   </picture>
 
@@ -465,7 +511,7 @@
     
 
     <!-- Fallback to the original file -->
-    <img src="/assets/img/publication_preview/candid_img.gif" class="preview z-depth-1 rounded" width="auto" height="auto" alt="candid_img.gif" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+    <img src="/assets/img/publication_preview/candid_img.webp" class="preview z-depth-1 rounded" width="auto" height="auto" alt="Method and electronic device for detecting candid moment in image frame" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
 
   </picture>
 
@@ -517,7 +563,7 @@
     
 
     <!-- Fallback to the original file -->
-    <img src="/assets/img/publication_preview/search.gif" class="preview z-depth-1 rounded" width="auto" height="auto" alt="search.gif" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+    <img src="/assets/img/publication_preview/search.gif" class="preview z-depth-1 rounded" width="auto" height="auto" alt="AdANNS: A Framework for Adaptive Semantic Search" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
 
   </picture>
 
@@ -586,7 +632,7 @@
     
 
     <!-- Fallback to the original file -->
-    <img src="/assets/img/publication_preview/matryoshka.gif" class="preview z-depth-1 rounded" width="auto" height="auto" alt="matryoshka.gif" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+    <img src="/assets/img/publication_preview/matryoshka.webp" class="preview z-depth-1 rounded" width="auto" height="auto" alt="Matryoshka Representation Learning" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
 
   </picture>
 
@@ -601,7 +647,7 @@
         <div class="author">
         
 
-        <em>Aniket Rege*</em>, <a href="https://homes.cs.washington.edu/~kusupati/" rel="external nofollow noopener noopener noreferrer" target="_blank">Aditya Kusupati*</a>, <a href="https://sites.google.com/view/gbhatt/" rel="external nofollow noopener noopener noreferrer" target="_blank">Gantavya Bhatt*</a>, <a href="https://mattwallingford.github.io/" rel="external nofollow noopener noopener noreferrer" target="_blank">Matthew Wallingford</a>, <a href="https://adityaasinha28.github.io/" rel="external nofollow noopener noopener noreferrer" target="_blank">Aditya Sinha</a>, <a href="https://vkramanuj.github.io/" rel="external nofollow noopener noopener noreferrer" target="_blank">Vivek Ramanujan</a>, <a href="https://williamhowardsnyder.github.io/" rel="external nofollow noopener noopener noreferrer" target="_blank">William Howard-Snyder</a>, Kaifeng Chen, <a href="https://sham.seas.harvard.edu/" rel="external nofollow noopener noopener noreferrer" target="_blank">Sham Kakade</a>, <a href="http://www.prateekjain.org/" rel="external nofollow noopener noopener noreferrer" target="_blank">Prateek Jain</a>, and <a href="https://homes.cs.washington.edu/~ali/" rel="external nofollow noopener noopener noreferrer" target="_blank">Ali Farhadi</a>
+        <a href="https://homes.cs.washington.edu/~kusupati/" rel="external nofollow noopener noopener noreferrer" target="_blank">Aditya Kusupati*</a>, <a href="https://sites.google.com/view/gbhatt/" rel="external nofollow noopener noopener noreferrer" target="_blank">Gantavya Bhatt*</a>, <em>Aniket Rege*</em>, <a href="https://mattwallingford.github.io/" rel="external nofollow noopener noopener noreferrer" target="_blank">Matthew Wallingford</a>, <a href="https://adityaasinha28.github.io/" rel="external nofollow noopener noopener noreferrer" target="_blank">Aditya Sinha</a>, <a href="https://vkramanuj.github.io/" rel="external nofollow noopener noopener noreferrer" target="_blank">Vivek Ramanujan</a>, <a href="https://williamhowardsnyder.github.io/" rel="external nofollow noopener noopener noreferrer" target="_blank">William Howard-Snyder</a>, Kaifeng Chen, <a href="https://sham.seas.harvard.edu/" rel="external nofollow noopener noopener noreferrer" target="_blank">Sham Kakade</a>, <a href="http://www.prateekjain.org/" rel="external nofollow noopener noopener noreferrer" target="_blank">Prateek Jain</a>, and <a href="https://homes.cs.washington.edu/~ali/" rel="external nofollow noopener noopener noreferrer" target="_blank">Ali Farhadi</a>
 </div>
 
         <!-- Journal/Book title and date -->
@@ -636,7 +682,7 @@
           <div class="bibtex hidden">
             <figure class="highlight"><pre><code class="language-bibtex" data-lang="bibtex"><span class="nc">@inproceedings</span><span class="p">{</span><span class="nl">kusupati2022matryoshka</span><span class="p">,</span>
   <span class="na">title</span> <span class="p">=</span> <span class="s">{Matryoshka Representation Learning}</span><span class="p">,</span>
-  <span class="na">author</span> <span class="p">=</span> <span class="s">{Rege*, Aniket and Kusupati*, Aditya and Bhatt*, Gantavya and Wallingford, Matthew and Sinha, Aditya and Ramanujan, Vivek and Howard-Snyder, William and Chen, Kaifeng and Kakade, Sham and Jain, Prateek and Farhadi, Ali}</span><span class="p">,</span>
+  <span class="na">author</span> <span class="p">=</span> <span class="s">{Kusupati*, Aditya and Bhatt*, Gantavya and Rege*, Aniket and Wallingford, Matthew and Sinha, Aditya and Ramanujan, Vivek and Howard-Snyder, William and Chen, Kaifeng and Kakade, Sham and Jain, Prateek and Farhadi, Ali}</span><span class="p">,</span>
   <span class="na">booktitle</span> <span class="p">=</span> <span class="s">{Advances in Neural Information Processing Systems (NeurIPS)}</span><span class="p">,</span>
   <span class="na">year</span> <span class="p">=</span> <span class="s">{2022}</span><span class="p">,</span>
 <span class="p">}</span></code></pre></figure>
@@ -654,7 +700,7 @@
     
 
     <!-- Fallback to the original file -->
-    <img src="/assets/img/publication_preview/processing-face.gif" class="preview z-depth-1 rounded" width="auto" height="auto" alt="processing-face.gif" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+    <img src="/assets/img/publication_preview/processing-face.webp" class="preview z-depth-1 rounded" width="auto" height="auto" alt="Method and electronic device for processing facial images" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
 
   </picture>
 
@@ -711,7 +757,7 @@
     
 
     <!-- Fallback to the original file -->
-    <img src="/assets/img/publication_preview/boomerang.gif" class="preview z-depth-1 rounded" width="auto" height="auto" alt="boomerang.gif" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+    <img src="/assets/img/publication_preview/boomerang.gif" class="preview z-depth-1 rounded" width="auto" height="auto" alt="Spatio-temporal video representation learning for AI-based video playback style prediction" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
 
   </picture>
 
@@ -778,7 +824,7 @@
     
 
     <!-- Fallback to the original file -->
-    <img src="/assets/img/publication_preview/no-soften.gif" class="preview z-depth-1 rounded" width="auto" height="auto" alt="no-soften.gif" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+    <img src="/assets/img/publication_preview/no-soften.gif" class="preview z-depth-1 rounded" width="auto" height="auto" alt="FabSoften: Face beautification via dynamic skin smoothing, guided feathering, and texture restoration" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
 
   </picture>
 
@@ -847,7 +893,7 @@
     
 
     <!-- Fallback to the original file -->
-    <img src="/assets/img/publication_preview/wifi.gif" class="preview z-depth-1 rounded" width="auto" height="auto" alt="wifi.gif" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
+    <img src="/assets/img/publication_preview/wifi.gif" class="preview z-depth-1 rounded" width="auto" height="auto" alt="QUIC protocol performance in wireless networks" onerror="this.onerror=null; $('.responsive-img-srcset').remove();">
 
   </picture>
 
@@ -862,7 +908,7 @@
         <div class="author">
         
 
-        <em>Aniket Rege*</em>, Prashant K Kharat*, Aneesh Goel*, and <a href="https://ece.nitk.ac.in/faculty/muralidhar-kulkarni" rel="external nofollow noopener noopener noreferrer" target="_blank">Muralidhar Kulkarni</a>
+        Prashant K Kharat*, <em>Aniket Rege*</em>, Aneesh Goel*, and <a href="https://ece.nitk.ac.in/faculty/muralidhar-kulkarni" rel="external nofollow noopener noopener noreferrer" target="_blank">Muralidhar Kulkarni</a>
 </div>
 
         <!-- Journal/Book title and date -->
@@ -893,7 +939,7 @@
           <div class="bibtex hidden">
             <figure class="highlight"><pre><code class="language-bibtex" data-lang="bibtex"><span class="nc">@inproceedings</span><span class="p">{</span><span class="nl">kharat2018quic</span><span class="p">,</span>
   <span class="na">title</span> <span class="p">=</span> <span class="s">{QUIC protocol performance in wireless networks}</span><span class="p">,</span>
-  <span class="na">author</span> <span class="p">=</span> <span class="s">{Rege*, Aniket and Kharat*, Prashant K and Goel*, Aneesh and Kulkarni, Muralidhar}</span><span class="p">,</span>
+  <span class="na">author</span> <span class="p">=</span> <span class="s">{Kharat*, Prashant K and Rege*, Aniket and Goel*, Aneesh and Kulkarni, Muralidhar}</span><span class="p">,</span>
   <span class="na">booktitle</span> <span class="p">=</span> <span class="s">{2018 International Conference on Communication and Signal Processing (ICCSP)}</span><span class="p">,</span>
   <span class="na">pages</span> <span class="p">=</span> <span class="s">{0472--0476}</span><span class="p">,</span>
   <span class="na">year</span> <span class="p">=</span> <span class="s">{2018}</span><span class="p">,</span>

@@ -3,6 +3,7 @@ layout: page
 permalink: /code/
 title: code
 description: 
+seo_description: Open-source code by Aniket Rege, including Matryoshka Representation Learning (MRL), AdANNS, CuRe, and EGAgent.
 nav: true
 nav_order: 3
 ---

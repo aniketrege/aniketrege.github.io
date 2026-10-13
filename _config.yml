@@ -8,10 +8,10 @@ middle_name:
 last_name: Rege
 email: aniketr@cs.wisc.edu
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
-  A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
+  Aniket Rege is a PhD student at UW-Madison working on long-horizon multimodal agents, RL post-training and evals for LLM agents, and pluralistic alignment.
 footer_text: >
   Powered by <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme.
-keywords: jekyll, jekyll-theme, academic-website, portfolio-website  # add your own keywords or leave empty
+keywords: Aniket Rege, UW-Madison, PhD, machine learning, LLM agents, agentic reasoning, reinforcement learning, RL post-training, multimodal, video understanding, pluralistic alignment, preference learning, Matryoshka Representation Learning, embeddings, information retrieval, research internship
 
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
 icon: ⚛️  # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
@@ -57,9 +57,21 @@ max_width: 800px
 # Open Graph & Schema.org
 # -----------------------------------------------------------------------------
 # Display links to the page with a preview object on social media.
-serve_og_meta: false # Include Open Graph meta tags in the HTML head
-serve_schema_org: false # Include Schema.org in the HTML head
-og_image: # The site-wide (default for all links) Open Graph preview image
+serve_og_meta: true # Include Open Graph meta tags in the HTML head
+serve_schema_org: true # Include Schema.org in the HTML head
+og_image: /assets/img/prof_pic.png # The site-wide (default for all links) Open Graph preview image
+
+# Extra profile links for Schema.org "sameAs" only (not shown as navbar icons)
+schema_same_as:
+  - https://orcid.org/0000-0003-1621-7098
+  - https://www.semanticscholar.org/author/51893810
+  - https://www.linkedin.com/in/aniket-rege
+
+schema_person:
+  job_title: PhD Student
+  affiliation: University of Wisconsin-Madison
+  alumni_of: [University of Washington, National Institute of Technology Karnataka]
+  knows_about: [LLM agents, Reinforcement learning, Multimodal reasoning, Video understanding, Pluralistic alignment, Representation learning, Information retrieval]
 
 # -----------------------------------------------------------------------------
 # Social integration
@@ -70,8 +82,8 @@ gitlab_username: # your GitLab user name
 twitter_username: wregss
 linkedin_username: aniket-rege
 scholar_userid: qdsfqI4AAAAJ
-semanticscholar_id: 51893810
-orcid_id: 0000-0003-1621-7098
+semanticscholar_id: # 51893810
+orcid_id: # 0000-0003-1621-7098
 medium_username: # your Medium username
 quora_username: # your Quora username
 publons_id: # your ID on Publons
@@ -101,7 +113,7 @@ contact_note: >
 google_analytics:  G-581WGMK2VJ
 panelbear_analytics:  # panelbear analytics site ID (format: XXXXXXXXX)
 
-google_site_verification:  # your google-site-verification ID (Google Search Console)
+google_site_verification: 3GJjsEYVLlz_L5zc4eB_Gr_0f1eq_J-HHiHVxRddF3c # your google-site-verification ID (Google Search Console)
 bing_site_verification:  # out your bing-site-verification ID (Bing Webmaster)
 
 # -----------------------------------------------------------------------------
@@ -110,7 +122,7 @@ bing_site_verification:  # out your bing-site-verification ID (Bing Webmaster)
 
 blog_name: Machination Learning # blog_name will be displayed in your blog page
 blog_nav_title: blog # your blog must have a title for it to be displayed in the nav bar
-blog_description: Join me on my Stochastic Graduate Descent (to Enlightment? Madness? Only time will tell!)
+blog_description: Join me on my Stochastic Graduate Descent (to Enlightenment? Madness? Only time will tell!)
 permalink: /blog/:year/:title/
 
 # Pagination
@@ -152,7 +164,7 @@ collections:
     output: true
     permalink: /news/:path/
   projects:
-    output: true
+    output: false
     permalink: /projects/:path/
 
 news_scrollable: true # adds a vertical scroll bar if there are more than 3 news items
@@ -206,6 +218,10 @@ plugins:
 defaults:
   - scope:
       path: "assets/**/*.*"
+    values:
+      sitemap: false
+  - scope:
+      type: news
     values:
       sitemap: false
 
@@ -307,7 +323,7 @@ jekyll-diagrams:
 
 enable_google_analytics:    true  # enables google analytics
 enable_panelbear_analytics: false  # enables panelbear analytics
-enable_google_verification: false  # enables google site verification
+enable_google_verification: true  # enables google site verification
 enable_bing_verification:   false  # enables bing site verification
 enable_masonry:             true   # enables automatic project cards arangement
 enable_math:                true   # enables math typesetting (uses MathJax)

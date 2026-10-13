@@ -3,6 +3,7 @@ layout: page
 permalink: /publications/
 title: publications
 description:
+seo_description: Publications by Aniket Rege (UW-Madison) on LLM agents, RL post-training, long video understanding, pluralistic alignment, and Matryoshka representation learning, at ACL, ICML, ICCV, ICLR, and NeurIPS.
 years: [2026, 2025, 2023, 2022, 2021, 2020, 2018]
 nav: true
 nav_order: 1

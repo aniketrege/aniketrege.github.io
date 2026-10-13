@@ -3,6 +3,7 @@ layout: page
 permalink: /teaching/
 title: teaching
 description: Courses I have TA'd in the past
+seo_description: Courses Aniket Rege has TA'd at UW-Madison and the University of Washington, including AI, computer vision, deep learning, and ML for big data.
 nav: true
 nav_order: 5
 ---
@@ -15,7 +16,7 @@ nav_order: 5
 - Prof. Sharon Li, Spring '25
 - Prof. Gavin Brown, Fall '25 (Head TA)
 
-##### *"[Introduction to Computer Vision](https://pages.cs.wisc.edu/~mohitg/courses/CS566/)"* (CS 540)
+##### *"[Introduction to Computer Vision](https://pages.cs.wisc.edu/~mohitg/courses/CS566/)"* (CS 566)
 - Prof. Mohit Gupta, Fall '26
 
 ---
@@ -33,7 +34,6 @@ nav_order: 5
 
 ##### *"[Signal Processing](http://www.washington.edu/students/crscat/ee.html#ee215)"* (EE 242)
 - Prof. Tai Chen, Spring '22
-
 - Prof. Akshay Gadre, Autumn '22
 
 Responsibilities Included:

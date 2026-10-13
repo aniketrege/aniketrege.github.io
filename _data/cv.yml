@@ -13,7 +13,7 @@
       institution: University of Wisconsin-Madison
       year: 2023 - present
       description:
-        - Working on Preference Learning and Generative Vision Models
+        - Working on Evals and RL post-training for Long-horizon Multimodal Agentic Reasoning and Heterogeneous and Diverse Preference Learning for Generative Models
     - title: MS, Electrical and Computer Engineering
       institution: University of Washington, Seattle
       year: 2021 - 2023
@@ -39,7 +39,7 @@
       institution: Meta, Redmond
       year: 2025
       description:
-        - Addressing very long video video understanding (~1 week +) with an agentic approach, EGAgent
+        - Addressing very long video understanding (~1 week +) with an agentic approach, EGAgent
         - Key contribution - modeling inter-entity relationships with a temporally annotated entity-scene graph
         - State-of-the-art results on EgoLife and competitive on Video-MME (Long)
     - title: Applied Research Intern
